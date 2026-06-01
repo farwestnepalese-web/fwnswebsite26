@@ -119,7 +119,7 @@
           <p style="font-size: 0.75rem; color: var(--gray); margin-top: 0.75rem;">Approved by General Secretary · Must attend 1 FWNS event or be vouched by 1 member</p>
         </div>
         <!-- General Family -->
-        <div class="mem-card featured fade-in">
+        <div class="mem-card fade-in">
           <div class="mem-type">General Member — Couple/Family</div>
           <div class="mem-price" style="font-size:1.1rem; margin:0.5rem 0;">$50 <span>/ year</span></div>
           <ul class="mem-features">
@@ -128,11 +128,11 @@
             <li>Community support services</li>
             <li>Valid for 2-year EC term</li>
           </ul>
-          <a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%; text-align:center; display:block; color: var(--dark);">Apply Now</a>
+          <a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" rel="noopener" class="btn btn-blue" style="width:100%; text-align:center; display:block;">Apply Now</a>
           <p style="font-size: 0.75rem; color: var(--gray); margin-top: 0.75rem;">Approved by General Secretary · Same requirements as individual general membership</p>
         </div>
         <!-- Life Individual -->
-        <div class="mem-card fade-in">
+        <div class="mem-card featured fade-in">
           <div class="mem-type">Life Member — Individual</div>
           <div class="mem-price" style="font-size:1.1rem; margin:0.5rem 0;">$100 <span>one-time</span></div>
           <ul class="mem-features">
@@ -142,7 +142,7 @@
             <li>Priority access to all programs</li>
             <li>Recognition at annual events</li>
           </ul>
-          <a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" rel="noopener" class="btn btn-blue" style="width:100%; text-align:center; display:block;">Apply Now</a>
+          <a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%; text-align:center; display:block; color: var(--dark);">Apply Now</a>
           <p style="font-size: 0.75rem; color: var(--gray); margin-top: 0.75rem;">Requires 1 yr General Membership + 2 FWNS events + EC majority approval</p>
         </div>
         <!-- Couple Life -->
@@ -245,7 +245,7 @@
     }
     .mc-field label { font-size:0.48rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.38); display:block; margin-bottom:0.15rem; }
     .mc-field span { font-size:0.75rem; font-weight:600; color:var(--white); }
-    .mc-website { font-size:0.48rem; color:rgba(255,255,255,0.22); text-align:center; padding:0.4rem 1.1rem 0.5rem; background:rgba(0,0,0,0.15); }
+    .mc-website { font-size:0.48rem; color:rgba(255,255,255,0.55); text-align:center; padding:0.4rem 1.1rem 0.5rem; background:rgba(0,0,0,0.15); }
   </style>
 
   <script>
@@ -297,10 +297,12 @@
             const cardBtn = (!isDiscontinued)
               ? `<br/><br/><button onclick="showMemberCard('${name.replace(/'/g,"\\'")}','${type.replace(/'/g,"\\'")}','${isLife ? 'life' : 'general'}')" style="background:var(--blue);color:#fff;border:none;padding:0.55rem 1.25rem;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;margin-top:0.5rem;">🪪 Get My Digital Card</button>`
               : '';
+            const memberId = getMemberId(name, isLife ? 'life' : 'general');
             return `<div class="result-card ${cardClass}" style="margin-bottom:1rem;">
               <div class="result-icon">${icon}</div>
               <div class="result-name">${name}</div>
               <div class="result-type">${type}</div>
+              <div style="font-size:0.78rem;font-weight:600;color:var(--blue);margin:0.35rem 0 0.1rem;letter-spacing:0.04em;">Member ID: ${memberId}</div>
               <div class="result-msg">${msg}${cardBtn}</div>
             </div>`;
           }
