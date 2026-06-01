@@ -185,50 +185,67 @@
       background:rgba(0,0,0,0.7); align-items:center; justify-content:center; padding:1rem;
     }
     .card-modal-overlay.open { display:flex; }
-    .card-modal-inner { background:var(--white); border-radius:16px; padding:2rem; max-width:500px; width:100%; position:relative; }
+    .card-modal-inner { background:var(--white); border-radius:16px; padding:1.5rem; max-width:560px; width:100%; position:relative; }
     .card-modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--gray); }
 
-    /* THE DIGITAL CARD */
+    /* THE DIGITAL CARD — portrait ID card */
     .member-card {
-      background: linear-gradient(135deg, #1A3A5C 0%, #0f2440 100%);
-      border-radius:14px; padding:1.75rem; color:var(--white);
-      position:relative; overflow:hidden; margin-bottom:1.25rem;
+      background: linear-gradient(160deg, #1e4472 0%, #0f2440 60%, #091929 100%);
+      border-radius:16px; padding:0; color:var(--white);
+      overflow:hidden; margin-bottom:1.25rem;
       font-family:'Inter',sans-serif;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      max-width:300px; margin-left:auto; margin-right:auto;
+      display:flex; flex-direction:column;
     }
-    .member-card::before {
-      content:''; position:absolute; top:-30px; right:-30px;
-      width:120px; height:120px; border-radius:50%;
-      background:rgba(212,160,23,0.15);
+    /* Header */
+    .mc-card-top {
+      padding: 0.9rem 1.1rem 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display:flex; align-items:center; gap:0.6rem;
+      background: rgba(0,0,0,0.2);
     }
-    .member-card::after {
-      content:''; position:absolute; bottom:-40px; left:-20px;
-      width:100px; height:100px; border-radius:50%;
-      background:rgba(255,255,255,0.04);
+    .mc-logo-wrap {
+      width:34px; height:34px; border-radius:50%;
+      background:#fff; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; padding:3px; box-sizing:border-box;
     }
-    .mc-org { font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:0.25rem; }
-    .mc-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--white); margin-bottom:1.25rem; }
+    .mc-logo-wrap img { width:100%; height:100%; object-fit:contain; }
+    .mc-org { font-size:0.5rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:0.1rem; }
+    .mc-title { font-size:0.65rem; font-weight:600; color:rgba(255,255,255,0.8); }
+    /* Body */
+    .mc-card-body {
+      padding:1.1rem 1.1rem 0.9rem;
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+    }
+    /* Passport photo — portrait rectangle */
     .mc-avatar {
-      width:52px; height:52px; border-radius:50%;
-      background:rgba(212,160,23,0.25); border:2px solid var(--gold);
+      width:80px; height:100px; border-radius:8px;
+      background:rgba(212,160,23,0.15); border:2px solid var(--gold);
       display:flex; align-items:center; justify-content:center;
-      font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--gold);
-      margin-bottom:0.75rem;
+      font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--gold);
+      overflow:hidden; margin-bottom:0.85rem;
     }
-    .mc-name { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--white); margin-bottom:0.2rem; }
-    .mc-type { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:1rem; }
-    .mc-divider { border:none; border-top:1px solid rgba(255,255,255,0.15); margin:1rem 0; }
-    .mc-row { display:flex; justify-content:space-between; gap:1rem; }
-    .mc-field label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.2rem; }
-    .mc-field span { font-size:0.82rem; font-weight:600; color:var(--white); }
+    .mc-avatar img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .mc-name { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:0.2rem; }
+    .mc-type { font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold); margin-bottom:0.5rem; }
     .mc-badge {
-      display:inline-flex; align-items:center; gap:0.3rem;
-      background:rgba(76,175,80,0.2); border:1px solid #4caf50;
-      color:#81c784; font-size:0.65rem; font-weight:700;
+      display:inline-flex; align-items:center; gap:0.25rem;
+      background:rgba(76,175,80,0.18); border:1px solid rgba(76,175,80,0.6);
+      color:#81c784; font-size:0.56rem; font-weight:700;
       letter-spacing:0.08em; text-transform:uppercase;
-      padding:0.2rem 0.6rem; border-radius:20px; margin-top:1rem;
+      padding:0.18rem 0.5rem; border-radius:20px;
     }
-    .mc-badge.general { background:rgba(212,160,23,0.2); border-color:var(--gold); color:var(--gold); }
-    .mc-website { font-size:0.65rem; color:rgba(255,255,255,0.3); margin-top:0.75rem; text-align:right; }
+    .mc-badge.general { background:rgba(212,160,23,0.15); border-color:rgba(212,160,23,0.6); color:var(--gold); }
+    /* Footer */
+    .mc-card-footer {
+      padding:0.65rem 1.1rem;
+      background:rgba(0,0,0,0.25);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:0.5rem;
+    }
+    .mc-field label { font-size:0.48rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.38); display:block; margin-bottom:0.15rem; }
+    .mc-field span { font-size:0.75rem; font-weight:600; color:var(--white); }
+    .mc-website { font-size:0.48rem; color:rgba(255,255,255,0.22); text-align:center; padding:0.4rem 1.1rem 0.5rem; background:rgba(0,0,0,0.15); }
   </style>
 
   <script>
@@ -308,6 +325,13 @@
       return name.split(' ').map(w => w[0]).join('').substring(0,2).toUpperCase();
     }
 
+    function getMemberId(name, kind) {
+      let hash = 5381;
+      for (let i = 0; i < name.length; i++) hash = ((hash << 5) + hash) + name.charCodeAt(i);
+      const num = String(Math.abs(hash) % 90000 + 10000);
+      return (kind === 'life' ? 'L' : 'G') + '-' + num;
+    }
+
     function showMemberCard(name, type, kind) {
       const isLife = kind === 'life';
       const expiry = isLife ? '' : 'July 2026';
@@ -317,13 +341,11 @@
         : `<div class="mc-badge general">✓ Active Member</div>`;
 
       const avatarEl = document.getElementById('mc-avatar');
-      avatarEl.textContent = initials;
-      avatarEl.style.backgroundImage = '';
-      avatarEl.style.backgroundSize = '';
-      avatarEl.style.backgroundPosition = '';
+      avatarEl.innerHTML = initials;
       document.getElementById('mc-name').textContent = name;
-      document.getElementById('mc-type').textContent = type;
+      document.getElementById('mc-type').textContent = type.replace(/\s*[—–-]+\s*(Individual|Couple\/Family|Couple|Family).*/i, '').trim();
       document.getElementById('mc-badge-wrap').innerHTML = badgeHtml;
+      document.getElementById('mc-member-id').textContent = getMemberId(name, kind);
 
       const expiryRow = document.getElementById('mc-expiry-row');
       if (isLife) {
@@ -348,9 +370,7 @@
       reader.onload = function(ev) {
         const avatarEl = document.getElementById('mc-avatar');
         avatarEl.textContent = '';
-        avatarEl.style.backgroundImage = `url(${ev.target.result})`;
-        avatarEl.style.backgroundSize = 'cover';
-        avatarEl.style.backgroundPosition = 'center';
+        avatarEl.innerHTML = `<img src="${ev.target.result}" alt="Member photo"/>`;
       };
       reader.readAsDataURL(file);
     }
@@ -374,13 +394,31 @@
       <h3 style="font-family:'Playfair Display',serif;color:var(--blue);margin-bottom:1.25rem;font-size:1.1rem;">Your Digital Member Card</h3>
 
       <div class="member-card" id="mc-printable">
-        <div class="mc-org">Far-Western Nepalese Society</div>
-        <div class="mc-title">Maryland, USA · Est. 2019</div>
-        <div class="mc-avatar" id="mc-avatar">--</div>
-        <div class="mc-name" id="mc-name"></div>
-        <div class="mc-type" id="mc-type"></div>
-        <hr class="mc-divider"/>
-        <div class="mc-row">
+        <!-- Header -->
+        <div class="mc-card-top">
+          <div class="mc-logo-wrap">
+            <img src="assets/logo.png" alt="FWNS-MD"/>
+          </div>
+          <div>
+            <div class="mc-org">Far-Western Nepalese Society</div>
+            <div class="mc-title">Maryland, USA &middot; Est. 2019</div>
+          </div>
+        </div>
+        <!-- Body -->
+        <div class="mc-card-body">
+          <div class="mc-avatar" id="mc-avatar">--</div>
+          <div class="mc-identity">
+            <div class="mc-name" id="mc-name"></div>
+            <div class="mc-type" id="mc-type"></div>
+            <div id="mc-badge-wrap" style="margin-top:0.4rem;"></div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div class="mc-card-footer">
+          <div class="mc-field">
+            <label>Member ID</label>
+            <span id="mc-member-id"></span>
+          </div>
           <div class="mc-field" id="mc-expiry-row">
             <label>Expires</label>
             <span id="mc-expiry"></span>
@@ -390,8 +428,7 @@
             <span>FWNS-MD</span>
           </div>
         </div>
-        <div id="mc-badge-wrap"></div>
-        <div class="mc-website">fwnsmd.org · EIN 93-2746265</div>
+        <div class="mc-website">fwnsmd.org &middot; EIN 93-2746265</div>
       </div>
 
       <div style="margin:1rem 0 0.5rem;">
