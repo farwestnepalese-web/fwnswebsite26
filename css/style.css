@@ -177,8 +177,9 @@ main { padding-top: var(--nav-h); }
 }
 .stats-inner {
   max-width: 900px; margin: 0 auto;
-  display: flex; justify-content: space-around;
-  flex-wrap: wrap; gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
 }
 .stat { text-align: center; }
 .stat-num {
@@ -525,10 +526,12 @@ footer {
   /* Spacing */
   section { padding: 3rem 1.25rem; }
   .hero { padding: 4rem 1.25rem 3rem; }
-  .stats-bar { padding: 1.25rem; }
-  .stats-inner { gap: 1.25rem; }
-  .stat-num { font-size: 1.4rem; }
-  .stat-label { font-size: 0.7rem; }
+  .stats-bar { padding: 1rem 0.75rem; }
+  .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 0.75rem 0.5rem; }
+  .stat-num { font-size: 1.25rem; }
+  .stat-label { font-size: 0.6rem; }
+  .stat:nth-child(4), .stat:nth-child(5) { display: none; }
+  .stat:nth-child(1), .stat:nth-child(2), .stat:nth-child(3) { display: block; }
 
   /* Footer */
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -549,7 +552,7 @@ footer {
 /* Small mobile — 480px */
 @media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; }
-  .stats-inner { gap: 1rem; justify-content: space-between; }
+  .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
   .stat { min-width: 80px; }
   .countdown-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .hero-actions { flex-direction: column; align-items: center; }
