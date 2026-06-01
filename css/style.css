@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   --red:    #C0392B;
@@ -17,7 +17,7 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--light);
   color: var(--dark);
   line-height: 1.7;
@@ -366,7 +366,7 @@ section { padding: 5rem 2rem; }
 .form-group input, .form-group textarea, .form-group select {
   width: 100%; padding: 0.75rem 1rem;
   border: 1.5px solid var(--border); border-radius: 8px;
-  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem;
   background: var(--white); color: var(--dark);
   transition: border-color 0.2s;
   -webkit-appearance: none;
