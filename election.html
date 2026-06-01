@@ -141,18 +141,20 @@
           const nameIdx = headers.findIndex(h => h.includes('name'));
           const typeIdx = headers.findIndex(h => h.includes('membership') || h.includes('type'));
 
-          const match = rows.slice(1).find(row =>
-            row[nameIdx] && row[nameIdx].toLowerCase().includes(query.toLowerCase())
-          );
+          const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+          const matches = rows.slice(1).filter(row => {
+            if (!row[nameIdx]) return false;
+            const nameLower = row[nameIdx].toLowerCase();
+            return queryWords.every(word => nameLower.includes(word));
+          });
 
-          if (match) {
-            const name = match[nameIdx];
-            const type = match[typeIdx] || 'Member';
+          function buildEligCard(row) {
+            const name = row[nameIdx];
+            const type = row[typeIdx] || 'Member';
             const isLife = type.toLowerCase().includes('life');
             const isGeneral = type.toLowerCase().includes('general');
-
             if (isLife) {
-              resultDiv.innerHTML = `<div class="elig-card life">
+              return `<div class="elig-card life" style="margin-bottom:1rem;">
                 <div class="elig-icon">🏅</div>
                 <div class="elig-name">${name}</div>
                 <div class="elig-type">${type}</div>
@@ -164,7 +166,7 @@
                 <div class="elig-msg">You are fully eligible to vote and run for any position in the FWNS-MD Executive Committee Election 2026. Make sure you file your candidacy by <strong>July 4, 2026</strong> if you wish to run.</div>
               </div>`;
             } else if (isGeneral) {
-              resultDiv.innerHTML = `<div class="elig-card general">
+              return `<div class="elig-card general" style="margin-bottom:1rem;">
                 <div class="elig-icon">✅</div>
                 <div class="elig-name">${name}</div>
                 <div class="elig-type">${type}</div>
@@ -175,13 +177,17 @@
                 <div class="elig-msg">As a General Member you are eligible to <strong>vote</strong> in the Election 2026. To run for office, you must hold Life Membership. <a href="membership.html" style="color:var(--blue);font-weight:600;">Apply for Life Membership →</a></div>
               </div>`;
             } else {
-              resultDiv.innerHTML = `<div class="elig-card general">
+              return `<div class="elig-card general" style="margin-bottom:1rem;">
                 <div class="elig-icon">✅</div>
                 <div class="elig-name">${name}</div>
                 <div class="elig-type">${type}</div>
                 <div class="elig-msg">You are a verified member of FWNS-MD. Please contact <a href="mailto:info@fwnsmd.org" style="color:var(--blue);">info@fwnsmd.org</a> for your specific election eligibility.</div>
               </div>`;
             }
+          }
+
+          if (matches.length > 0) {
+            resultDiv.innerHTML = matches.map(buildEligCard).join('');
           } else {
             resultDiv.innerHTML = `<div class="elig-card not-found">
               <div class="elig-icon">❌</div>

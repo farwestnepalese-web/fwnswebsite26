@@ -202,13 +202,17 @@
           const nameIdx = headers.findIndex(h => h.includes('name'));
           const typeIdx = headers.findIndex(h => h.includes('membership') || h.includes('type'));
 
-          const match = rows.slice(1).find(row =>
-            row[nameIdx] && row[nameIdx].toLowerCase().includes(query.toLowerCase())
-          );
+          // Match if every word in the query appears somewhere in the name
+          const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+          const matches = rows.slice(1).filter(row => {
+            if (!row[nameIdx]) return false;
+            const nameLower = row[nameIdx].toLowerCase();
+            return queryWords.every(word => nameLower.includes(word));
+          });
 
-          if (match) {
-            const name = match[nameIdx];
-            const type = match[typeIdx] || 'Member';
+          function buildCard(row) {
+            const name = row[nameIdx];
+            const type = row[typeIdx] || 'Member';
             const typeLower = type.toLowerCase();
             const isLife = typeLower.includes('life');
             const isDiscontinued = typeLower.includes('student') || typeLower.includes('senior');
@@ -222,13 +226,16 @@
               : isGeneral
               ? 'You are a verified General Member. Please renew your membership by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/>Consider upgrading to Life Membership for lifetime voting rights and greater community impact.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew or Upgrade Membership →</a>'
               : 'You are a verified member of FWNS-MD. Thank you for being part of our community.';
-
-            resultDiv.innerHTML = `<div class="result-card ${cardClass}">
+            return `<div class="result-card ${cardClass}" style="margin-bottom:1rem;">
               <div class="result-icon">${icon}</div>
               <div class="result-name">${name}</div>
               <div class="result-type">${type}</div>
               <div class="result-msg">${msg}</div>
             </div>`;
+          }
+
+          if (matches.length > 0) {
+            resultDiv.innerHTML = matches.map(buildCard).join('');
           } else {
             resultDiv.innerHTML = `<div class="result-card not-found">
               <div class="result-icon">❌</div>
