@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programs · Far-Western Nepalese Society, Maryland</title>
+  <meta name="description" content="FWNS-MD community programs — Gaura Parva, Bishu Parva, Kids Day Out, cultural celebrations, and more."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* SIGNATURE PROGRAMS */
+    .signature-card {
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      margin-bottom: 2.5rem;
+    }
+    .signature-card-header {
+      background: var(--blue); padding: 2.5rem;
+      display: flex; align-items: flex-start; gap: 1.5rem;
+    }
+    .sig-icon {
+      font-size: 3rem; flex-shrink: 0; line-height: 1;
+    }
+    .signature-card-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .signature-card-header .sig-sub {
+      font-size: 0.8rem; color: rgba(255,255,255,0.6);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .sig-badge {
+      display: inline-block;
+      background: var(--gold); color: var(--dark);
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.2rem 0.7rem; border-radius: 20px;
+      margin-bottom: 0.6rem;
+    }
+    .signature-card-body {
+      background: var(--white); padding: 2rem 2.5rem;
+    }
+    .signature-card-body p {
+      color: var(--gray); line-height: 1.8; font-size: 0.95rem; margin-bottom: 1rem;
+    }
+    .sig-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .sig-highlight {
+      background: #f4f6f9; border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .sig-highlight strong { display: block; font-size: 1.1rem; color: var(--blue); margin-bottom: 0.2rem; }
+    .sig-highlight span { font-size: 0.78rem; color: var(--gray); }
+
+    /* OTHER PROGRAMS */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem; margin-top: 2rem;
+    }
+    .program-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .program-card .year-tag {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .program-card h4 { font-size: 0.95rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .program-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+
+    .section-divider { border: none; border-top: 2px solid var(--border); margin: 3.5rem 0; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="FWNS-MD Logo"/>
+    <div class="nav-brand-text">
+      <span class="name">Far-Western Nepalese Society</span>
+      <span class="sub">Maryland, USA · Est. 2019</span>
+    </div>
+  </a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="programs.html" class="active">Programs</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="sports.html">Sports</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="election.html">Election 2026</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="agm.html">AGM</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="membership.html" class="btn-nav">Join Us</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Programs</span></div>
+    <h1>Our Programs</h1>
+    <p>From signature cultural festivals to youth initiatives — FWNS-MD brings the community together year after year.</p>
+  </div>
+
+  <section style="background: var(--white);">
+    <div class="section-inner">
+
+      <span class="section-tag">Signature Programs</span>
+      <h2 class="section-title">Our Flagship Events</h2>
+      <p style="color:var(--gray); max-width:640px; font-size:0.95rem; margin-bottom:2.5rem;">Gaura Parva and Bishu Parva are the cornerstone cultural events of FWNS-MD — annual celebrations that unite the Far-Western Nepalese community in Maryland and have earned recognition from Baltimore City and County governments.</p>
+
+      <!-- GAURA PARVA -->
+      <div class="signature-card fade-in">
+        <div class="signature-card-header">
+          <div class="sig-icon">🌿</div>
+          <div>
+            <div class="sig-badge">Signature Program · Annual</div>
+            <h2>Gaura Parva</h2>
+            <div class="sig-sub">Far-Western New Year Festival · Held Every August</div>
+          </div>
+        </div>
+        <div class="signature-card-body">
+          <p>Gaura Parva is the premier cultural event of FWNS-MD and a cornerstone of Far-Western identity in Maryland. One of the most cherished festivals of the Far-Western Nepali community, it celebrates the arrival of the new year, the bounty of harvest, and the enduring bonds of family and community.</p>
+          <p>Under the current executive leadership, FWNS-MD organized the <strong>3rd and 4th Gaura Parva celebrations</strong>, each bringing together hundreds of community members across generations. The events feature traditional rituals, cultural performances, community recognition, Deuda dancing, and organized program management — reflecting both cultural authenticity and organizational maturity.</p>
+          <p>Gaura Parva has received civic recognition from <strong>Baltimore City and County governments</strong>, establishing it as a respected annual cultural institution that reinforces heritage preservation and intergenerational unity across the Nepali diaspora in Maryland.</p>
+          <div class="sig-highlights">
+            <div class="sig-highlight"><strong>4th Edition</strong><span>Celebrated in 2025</span></div>
+            <div class="sig-highlight"><strong>Govt. Recognized</strong><span>Baltimore City &amp; County</span></div>
+            <div class="sig-highlight"><strong>Annual</strong><span>Held every August</span></div>
+            <div class="sig-highlight"><strong>Multi-generational</strong><span>Families &amp; youth</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BISHU PARVA -->
+      <div class="signature-card fade-in">
+        <div class="signature-card-header">
+          <div class="sig-icon">🌸</div>
+          <div>
+            <div class="sig-badge">Signature Program · Annual</div>
+            <h2>Bishu Parva</h2>
+            <div class="sig-sub">Nepali New Year Celebration · Held Every Spring</div>
+          </div>
+        </div>
+        <div class="signature-card-body">
+          <p>Bishu Parva is FWNS-MD's celebration of the Nepali New Year — one of the most cherished traditions of the Far-Western region. The festival brings together members of the Nepali diaspora across Maryland and neighboring states for cultural performances, traditional Nepali cuisine, and family-friendly activities.</p>
+          <p>The <strong>3rd Bishu Parva</strong> (2025) continued the preservation of Far-Western New Year traditions while expanding youth and family engagement. The event strengthened regional identity and cultural continuity, reinforcing FWNS-MD's commitment to sustaining traditional values within a structured organizational framework.</p>
+          <p>Bishu Parva has received positive engagement and recognition at the community level, further positioning FWNS-MD as a key cultural organizer in Maryland. It is particularly meaningful for second-generation community members connecting with their Far-Western heritage.</p>
+          <div class="sig-highlights">
+            <div class="sig-highlight"><strong>3rd Edition</strong><span>Celebrated in 2025</span></div>
+            <div class="sig-highlight"><strong>Spring Festival</strong><span>Nepali New Year</span></div>
+            <div class="sig-highlight"><strong>Multi-State</strong><span>MD &amp; neighboring states</span></div>
+            <div class="sig-highlight"><strong>Youth Focused</strong><span>2nd generation engagement</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OTHER PROGRAMS -->
+  <section>
+    <div class="section-inner">
+      <hr class="section-divider" style="margin-top:0;"/>
+      <span class="section-tag">Community Programs</span>
+      <h2 class="section-title">Annual Program Calendar</h2>
+      <p style="color:var(--gray); max-width:640px; font-size:0.95rem;">In addition to our signature festivals, FWNS-MD runs a full calendar of cultural, civic, youth, and community programs throughout the year.</p>
+
+      <div class="programs-grid fade-in">
+        <div class="program-card">
+          <div class="year-tag">Cultural · Annual</div>
+          <h4>Dashain &amp; Tihar Celebration</h4>
+          <p>One of Nepal's most important festivals, celebrated community-wide with cultural programs, music, and family gatherings.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Cultural · Annual</div>
+          <h4>Teej Celebration</h4>
+          <p>A traditional festival honoring women, celebrated with song, dance, and community participation by FWNS-MD members.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Cultural · Annual</div>
+          <h4>Deusi Bhailo</h4>
+          <p>A beloved Tihar tradition where community members go door-to-door singing Deusi songs, spreading joy and raising community funds.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Cultural · Annual</div>
+          <h4>Holi Celebration</h4>
+          <p>The festival of colors celebrated with community members of all ages, promoting joy, unity, and cultural expression.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Cultural · Annual</div>
+          <h4>Nepali New Year Celebration</h4>
+          <p>Community-wide new year festivities welcoming the Nepali calendar year with cultural programs and community gatherings.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Youth · Inaugural 2025</div>
+          <h4>Kids Day Out</h4>
+          <p>Launched for the first time in 2025, Kids Day Out brought children and families together at the Maryland Zoo for nature-based learning and community bonding — a foundational step in FWNS-MD's youth development commitment.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Sports · 2025</div>
+          <h4>Maryland Cup — Inter-State Volleyball</h4>
+          <p>FWNS-MD's landmark athletic event — 14 teams from across the U.S. competed in Jessup, MD on August 9–10, 2025. Attended by Maryland State Delegates.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Civic · 2025</div>
+          <h4>Meet &amp; Greet with Elected Officials</h4>
+          <p>FWNS-MD hosted community meet &amp; greet sessions with Hon. Bir Bahadur Balayar and Hon. Padam B Shahi, strengthening civic engagement for our community.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Entertainment · 2025</div>
+          <h4>DT Fest with Ravi Oad &amp; Rekha Joshi</h4>
+          <p>A major cultural entertainment event featuring renowned Far-Western artists, bringing high-energy music and cultural expression to the Maryland community.</p>
+        </div>
+        <div class="program-card">
+          <div class="year-tag">Governance · Annual</div>
+          <h4>FWNS Assessment Meeting</h4>
+          <p>Annual organizational review meeting where the Executive Committee presents progress reports, reviews programs, and plans for the year ahead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="accent-box fade-in" style="text-align:center;">
+        <span class="section-tag" style="color:var(--gold);">Get Involved</span>
+        <h2 class="section-title" style="color:var(--white);">Be Part of Our Programs</h2>
+        <p style="opacity:0.8; max-width:500px; margin:0 auto 2rem;">Members get priority access to all FWNS-MD events and programs. Volunteers help make them happen. Join us.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="membership.html" class="btn btn-gold">Become a Member</a>
+          <a href="volunteer.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:var(--white);">Volunteer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="FWNS-MD"/>
+          <div class="footer-brand-text"><div class="name">Far-Western Nepalese Society</div><div class="sub">Maryland, USA</div></div>
+        </div>
+        <p class="footer-desc">A 501(c)(3) nonprofit organization uniting the Far-Western Nepalese diaspora in Maryland through culture, education, sports, and community support.</p>
+        <div class="footer-social"><a href="https://www.facebook.com/FWNSMD" target="_blank" rel="noopener">f</a></div>
+      </div>
+      <div class="footer-col"><h5>Navigate</h5><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="election.html">Election 2026</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="agm.html">AGM</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Quick Links</h5><ul>
+        <li><a href="membership.html">Join FWNS-MD</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="election.html">Election 2026</a></li>
+        <li><a href="assets/AGM-2026-Report.pdf" download>AGM 2026 Report</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul>
+        <li><a href="mailto:info@fwnsmd.org">info@fwnsmd.org</a></li>
+        <li><a href="https://www.facebook.com/FWNSMD" target="_blank">Facebook</a></li>
+        <li><a href="contact.html">Contact Form</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Far-Western Nepalese Society, Maryland, USA. All Rights Reserved.</p>
+      <div class="ein"><span>EIN: 93-2746265</span><span>·</span><span>501(c)(3) Public Charity</span><span>·</span><span>Incorporated July 15, 2022</span></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
