@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Election 2026 · Far-Western Nepalese Society, Maryland</title>
+  <meta name="description" content="FWNS-MD Executive Committee Election 2026 — schedule, eligibility, candidacy filing, and official bylaws."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; }
+    .countdown-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .countdown-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .countdown-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; margin-top: 0.25rem; }
+    .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .phase-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
+    .phase-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--blue); }
+    .phase-card.current::before { background: var(--gold); }
+    .phase-card.election::before { background: var(--red); }
+    .phase-date { font-size: 0.8rem; color: var(--gray); margin-bottom: 0.4rem; }
+    .phase-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--blue); margin-bottom: 0.4rem; }
+    .phase-card p { font-size: 0.85rem; color: var(--gray); }
+    .phase-card .tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; margin-bottom: 0.75rem; }
+    .tag-active { background: #fef3c7; color: #92400e; }
+    .tag-upcoming { background: #dbeafe; color: #1e40af; }
+    .tag-election { background: #fee2e2; color: #991b1b; }
+    .tag-complete { background: #d1fae5; color: #065f46; }
+    @media(max-width:480px){ .countdown-grid { grid-template-columns: repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="FWNS-MD Logo"/>
+    <div class="nav-brand-text">
+      <span class="name">Far-Western Nepalese Society</span>
+      <span class="sub">Maryland, USA · Est. 2019</span>
+    </div>
+  </a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="election.html">Election 2026</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="membership.html" class="btn-nav">Join Us</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- ELECTION HERO -->
+  <div style="background: linear-gradient(135deg, #0f2440 0%, var(--blue) 100%); color: var(--white); padding: 4rem 2rem 3rem; text-align: center;">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Election 2026</span></div>
+    <div style="display: inline-block; background: rgba(212,160,23,0.2); border: 1px solid var(--gold); color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 50px; margin-bottom: 1rem;">🗳️ Official Election Notice</div>
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,3rem); font-weight: 900; margin-bottom: 0.75rem;">FWNS-MD Executive Committee<br/>Election 2026</h1>
+    <p style="opacity: 0.75; max-width: 580px; margin: 0 auto 2rem;">The current Executive Committee's tenure is coming to an end. We are electing a new 15-member Executive Committee to lead FWNS-MD for the next two years.</p>
+    <div class="countdown-grid" style="max-width: 480px; margin: 0 auto;" id="countdown">
+      <div class="countdown-item"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
+    </div>
+    <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 0.5rem;">Countdown to Election Day: July 11, 2026</p>
+  </div>
+
+  <!-- SCHEDULE -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="fade-in" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-tag">Official Timeline</span>
+        <h2 class="section-title">Election Schedule</h2>
+        <p class="section-sub" style="margin: 0 auto;">Adopted by the FWNS-MD Executive Committee at a meeting held on May 25, 2026.</p>
+      </div>
+
+      <table class="styled-table fade-in">
+        <thead><tr><th>Phase</th><th>Date(s)</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Membership Closing Deadline</strong><br/><span style="font-size:0.8rem;color:var(--gray);">Last day to register/renew for election eligibility</span></td><td>June 13, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td><strong>Candidacy Filing Period Opens</strong></td><td>June 26, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td><strong>Candidacy Filing Period Closes</strong><br/><span style="font-size:0.8rem;color:var(--gray);">Initial Final Candidacy List published</span></td><td>July 3, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td><strong>Candidacy Withdrawal Period</strong></td><td>July 4 – July 6, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td><strong>Final Candidacy Review & Confirmation</strong></td><td>July 6, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td><strong>🗳️ Election Day</strong></td><td>July 11, 2026</td><td><span class="badge badge-red">Election Day</span></td></tr>
+          <tr><td><strong>Announcement of Results</strong></td><td>July 11, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+          <tr><td><strong>Handover Ceremony</strong></td><td>July 18, 2026</td><td><span class="badge badge-blue">Upcoming</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section>
+    <div class="section-inner">
+      <div class="two-col fade-in">
+        <div>
+          <span class="section-tag">Who Can Vote</span>
+          <h2 class="section-title">Voter Eligibility</h2>
+          <div class="card" style="border-left: 4px solid var(--blue); margin-top: 1.5rem;">
+            <h3 style="font-size: 1rem; margin-bottom: 1rem;">To vote in the 2026 election you must:</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--blue);font-weight:700;">✓</span> Be a dues-paying General or Life Member in good standing</li>
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--blue);font-weight:700;">✓</span> Have your membership active by <strong>June 13, 2026</strong></li>
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--blue);font-weight:700;">✓</span> Be a resident of the State of Maryland</li>
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--blue);font-weight:700;">✓</span> Present a valid photo ID on election day</li>
+            </ul>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--gray); margin-top: 1rem;">Life Members may vote in any election regardless of renewal date, provided they are in good standing.</p>
+        </div>
+        <div>
+          <span class="section-tag">Who Can Run</span>
+          <h2 class="section-title">Candidacy Eligibility</h2>
+          <div class="card" style="border-left: 4px solid var(--gold); margin-top: 1.5rem;">
+            <h3 style="font-size: 1rem; margin-bottom: 1rem;">To file as a candidate you must be a <strong>Life Member</strong> and:</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--gold);font-weight:700;">✓</span> Hold valid Life Membership (Individual or Couple)</li>
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--gold);font-weight:700;">✓</span> Be nominated by 2 members (one nominating, one seconding)</li>
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--gold);font-weight:700;">✓</span> For <strong>at-large Board positions</strong>: Life Member status is sufficient</li>
+              <li style="display:flex;gap:0.6rem;font-size:0.9rem;"><span style="color:var(--gold);font-weight:700;">✓</span> For <strong>President, VP, Secretaries, Treasurer</strong>: Must have held Life Membership for at least 1 year (min. 2 yrs total involvement)</li>
+            </ul>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--gray); margin-top: 1rem;">Nomination fees for this election cycle will be announced by the Election Commissioner by June 13, 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELECTION COMMISSIONER -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="fade-in" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-tag">Election Committee</span>
+        <h2 class="section-title">Election Commissioner</h2>
+      </div>
+      <div style="max-width: 600px; margin: 0 auto;" class="fade-in">
+        <div class="card" style="text-align: center; border-top: 4px solid var(--gold);">
+          <div style="width: 64px; height: 64px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: var(--white); font-family: 'Playfair Display', serif; font-weight: 700;">BK</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--blue);">Bhim BK</h3>
+          <p style="color: var(--gold); font-weight: 600; font-size: 0.875rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em;">Election Commissioner</p>
+          <p style="color: var(--gray); font-size: 0.9rem;">Bhim BK has officially accepted the role of Election Commissioner for the FWNS-MD 2026 Executive Committee Election. He will lead and coordinate the Election Committee and oversee the entire election process to ensure a fair and transparent election.</p>
+          <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+            <p style="font-size: 0.8rem; color: var(--gray);">For election-related inquiries, contact the Election Commissioner through:</p>
+            <a href="mailto:info@fwnsmd.org" style="color: var(--blue); font-weight: 600; font-size: 0.9rem;">info@fwnsmd.org</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONS -->
+  <section>
+    <div class="section-inner fade-in">
+      <span class="section-tag">Open Positions</span>
+      <h2 class="section-title">15 Seats Up for Election</h2>
+      <p style="color: var(--gray); margin-bottom: 0.5rem;">The following positions will be elected. Up to 3 at-large Members may be appointed by the incoming EC and ratified by the General Assembly.</p>
+      <p style="font-size: 0.85rem; color: var(--red); font-weight: 600; margin-bottom: 1.5rem;">⚠️ At least 33% of elected positions must be held by women, as required by the FWNS-MD Bylaws.</p>
+      <table class="styled-table">
+        <thead><tr><th>Position</th><th>Requirements</th><th>Seats</th></tr></thead>
+        <tbody>
+          <tr><td><strong>President</strong></td><td>Life Member 1+ yr · Min. 2 yrs total involvement</td><td>1</td></tr>
+          <tr><td><strong>Vice President</strong></td><td>Life Member 1+ yr · Min. 2 yrs total involvement</td><td>1</td></tr>
+          <tr><td><strong>General Secretary</strong></td><td>Life Member 1+ yr · Min. 2 yrs total involvement</td><td>1</td></tr>
+          <tr><td><strong>Secretary</strong></td><td>Life Member 1+ yr · Min. 2 yrs total involvement</td><td>1</td></tr>
+          <tr><td><strong>Treasurer</strong></td><td>Life Member 1+ yr · Min. 2 yrs total involvement</td><td>1</td></tr>
+          <tr><td><strong>Members at Large (Board of Directors)</strong></td><td>Life Member status at time of filing</td><td>10</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BYLAWS DOWNLOAD -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="accent-box fade-in" style="text-align: center;">
+        <span class="section-tag" style="color: var(--gold);">Official Documents</span>
+        <h2 class="section-title" style="color: var(--white);">FWNS-MD Official Bylaws</h2>
+        <p style="opacity: 0.8; max-width: 540px; margin: 0 auto 2rem;">The bylaws govern all aspects of the election process, membership eligibility, and organizational operations. Adopted at the Annual General Meeting, February 28, 2026.</p>
+        <a href="assets/FWNSMD_ByLaws.pdf" download class="btn btn-gold">📄 Download Bylaws (PDF)</a>
+        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.5;">EIN: 93-2746265 · 501(c)(3) Public Charity · Incorporated July 15, 2022</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="FWNS-MD"/>
+          <div class="footer-brand-text">
+            <div class="name">Far-Western Nepalese Society</div>
+            <div class="sub">Maryland, USA</div>
+          </div>
+        </div>
+        <p class="footer-desc">A 501(c)(3) nonprofit uniting the Far-Western Nepalese diaspora in Maryland.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/FWNSMD" target="_blank" rel="noopener">f</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Navigate</h5><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="election.html">Election 2026</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Election</h5><ul>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="membership.html">Get Life Membership</a></li>
+        <li><a href="assets/FWNSMD_ByLaws.pdf" download>Download Bylaws</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul>
+        <li><a href="mailto:info@fwnsmd.org">info@fwnsmd.org</a></li>
+        <li><a href="https://www.facebook.com/FWNSMD" target="_blank">Facebook</a></li>
+        <li><a href="contact.html">Contact Form</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Far-Western Nepalese Society, Maryland, USA. All Rights Reserved.</p>
+      <div class="ein"><span>EIN: 93-2746265</span><span>·</span><span>501(c)(3) Public Charity</span></div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Countdown to July 11, 2026
+  const electionDay = new Date('2026-07-11T09:00:00');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = electionDay - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<div style="text-align:center;width:100%;padding:1rem;font-size:1.1rem;color:var(--gold);font-weight:700;">Election Day is here! 🗳️</div>';
+      return;
+    }
+    const days  = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs  = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
