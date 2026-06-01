@@ -209,12 +209,16 @@
           if (match) {
             const name = match[nameIdx];
             const type = match[typeIdx] || 'Member';
-            const isLife = type.toLowerCase().includes('life');
-            const isGeneral = type.toLowerCase().includes('general');
-            const cardClass = isLife ? 'found-life' : isGeneral ? 'found-general' : 'found-other';
-            const icon = isLife ? '🏅' : '✅';
+            const typeLower = type.toLowerCase();
+            const isLife = typeLower.includes('life');
+            const isDiscontinued = typeLower.includes('student') || typeLower.includes('senior');
+            const isGeneral = typeLower.includes('general') && !isDiscontinued;
+            const cardClass = isLife ? 'found-life' : isDiscontinued ? 'not-found' : isGeneral ? 'found-general' : 'found-other';
+            const icon = isLife ? '🏅' : isDiscontinued ? '⚠️' : '✅';
             const msg = isLife
               ? 'You are a verified Life Member of FWNS-MD. Thank you for your lifetime commitment to our community.'
+              : isDiscontinued
+              ? `Your previous membership type (<strong>${type}</strong>) has been discontinued as per the amended FWNS-MD bylaws. You will need to renew as a <strong>General Member</strong> or upgrade to <strong>Life Member</strong> to remain an active member in good standing.<br/><br/>Please renew by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew Membership →</a>`
               : isGeneral
               ? 'You are a verified General Member. Please renew your membership by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/>Consider upgrading to Life Membership for lifetime voting rights and greater community impact.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew or Upgrade Membership →</a>'
               : 'You are a verified member of FWNS-MD. Thank you for being part of our community.';
