@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sports Clubs · Far-Western Nepalese Society, Maryland</title>
+  <meta name="description" content="FWNS-MD sports clubs — soccer, cricket, and volleyball. Competitive teams representing the Far-Western Nepalese community across Maryland and beyond."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    .sport-section { padding: 3rem 0; }
+    .sport-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .sport-icon {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; flex-shrink: 0;
+    }
+    .sport-header h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); margin: 0; }
+    .sport-header .sub { font-size: 0.8rem; color: var(--gray); }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .achievement-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+    }
+    .achievement-card .trophy { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .achievement-card h4 { font-size: 0.9rem; color: var(--dark); margin-bottom: 0.25rem; font-weight: 700; }
+    .achievement-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+    .highlight-box {
+      background: var(--blue); color: var(--white);
+      border-radius: 14px; padding: 2rem;
+      margin-top: 1.5rem;
+    }
+    .highlight-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.75rem; }
+    .highlight-box p { font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin-bottom: 0.5rem; }
+    .highlight-box .result { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .highlight-box .result-item { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.82rem; }
+    .highlight-box .result-item strong { display: block; font-size: 1rem; color: var(--gold); }
+
+    .tourney-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .tourney-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.9rem; color: var(--gray); }
+    .tourney-list li::before { content: '→'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
+
+    .divider { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="FWNS-MD Logo"/>
+    <div class="nav-brand-text">
+      <span class="name">Far-Western Nepalese Society</span>
+      <span class="sub">Maryland, USA · Est. 2019</span>
+    </div>
+  </a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="sports.html" class="active">Sports</a></li>
+    <li><a href="volunteer.html">Volunteer</a></li>
+    <li><a href="election.html">Election 2026</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="agm.html">AGM</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="membership.html" class="btn-nav">Join Us</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Sports Clubs</span></div>
+    <h1>Sports Clubs</h1>
+    <p>FWNS-MD fields competitive teams in soccer, cricket, and volleyball — representing our community across Maryland and beyond.</p>
+  </div>
+
+  <section style="background: var(--white);">
+    <div class="section-inner">
+
+      <!-- SOCCER -->
+      <div class="sport-section fade-in">
+        <div class="sport-header">
+          <div class="sport-icon">⚽</div>
+          <div>
+            <h2>Soccer</h2>
+            <div class="sub">Adult &amp; Youth (U15) Teams · BANA Cup &amp; Regional Competitions</div>
+          </div>
+        </div>
+        <p style="color:var(--gray); font-size:0.95rem; max-width:700px;">FWNS-MD fields both adult and youth soccer teams, competing in some of the most recognized Nepali soccer competitions in the Mid-Atlantic region. Our U15 youth program has been a particular source of pride, producing back-to-back championship wins.</p>
+
+        <div class="achievement-grid">
+          <div class="achievement-card">
+            <div class="trophy">🏆</div>
+            <h4>Himalaya Baltimore U15 Championship</h4>
+            <p>Our U15 team claimed the championship title at the Himalaya Baltimore U15 Soccer Tournament, defending their position as top youth team.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="trophy">🏆</div>
+            <h4>BANA U15 Soccer Championship</h4>
+            <p>FWNS-MD's U15 squad won the BANA U15 Soccer Tournament Championship, further cementing the program's dominance in youth athletics.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="trophy">⚽</div>
+            <h4>BANA Cup Participation</h4>
+            <p>Our adult soccer team actively participates in the BANA Cup — one of the region's most recognized Nepali soccer competitions.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- VOLLEYBALL -->
+      <div class="sport-section fade-in">
+        <div class="sport-header">
+          <div class="sport-icon">🏐</div>
+          <div>
+            <h2>Volleyball — Far-Western Volleyball Club</h2>
+            <div class="sub">Maryland Cup Organizers · Interstate Competition</div>
+          </div>
+        </div>
+        <p style="color:var(--gray); font-size:0.95rem; max-width:700px;">In coordination with the Far-Western Volleyball Club, FWNS-MD organized the landmark <strong>FWNS Maryland Cup 2025</strong> — a historic inter-state volleyball tournament that turned Maryland into a national platform for Nepali volleyball excellence.</p>
+
+        <div class="highlight-box">
+          <h3>FWNS Maryland Cup 2025 — Inter-State Volleyball Tournament</h3>
+          <p>Held on August 9–10, 2025 in Jessup, Maryland. Attended by Maryland State Delegates and featuring teams from across the United States.</p>
+          <div class="result">
+            <div class="result-item"><strong>14</strong>Teams Competed</div>
+            <div class="result-item"><strong>Multi-State</strong>Participation</div>
+            <div class="result-item"><strong>🏆 Champions</strong>Everest FCU Team (Texas)</div>
+            <div class="result-item"><strong>Runner-Up</strong>MD Nepalese Volleyball Club</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- CRICKET -->
+      <div class="sport-section fade-in">
+        <div class="sport-header">
+          <div class="sport-icon">🏏</div>
+          <div>
+            <h2>Cricket — Far-Western Cricket Club</h2>
+            <div class="sub">Regional &amp; Interstate Tournaments · Multi-Team Representation</div>
+          </div>
+        </div>
+        <p style="color:var(--gray); font-size:0.95rem; max-width:700px;">FWNS-MD's cricket program has maintained strong regional and interstate representation, fielding multiple teams at competitive tournaments across Maryland, Virginia, and Massachusetts. The club's ability to mobilize athletes across state lines reflects the depth and commitment of our cricket community.</p>
+
+        <ul class="tourney-list">
+          <li>Charm City Yeti T10 Cricket Tournament — Maryland</li>
+          <li>Everest &amp; Saathi Cup 2025 — Virginia (two FWNS teams representing)</li>
+          <li>3rd Rup Smriti Cricket Tournament — Boston, Massachusetts</li>
+        </ul>
+
+        <div class="achievement-grid" style="margin-top:1.5rem;">
+          <div class="achievement-card">
+            <div class="trophy">🌍</div>
+            <h4>Interstate Reach</h4>
+            <p>Competed across Maryland, Virginia, and Massachusetts — expanding FWNS-MD's athletic presence beyond the Mid-Atlantic region.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="trophy">👥</div>
+            <h4>Multi-Team Depth</h4>
+            <p>Fielded two separate FWNS teams at the Everest &amp; Saathi Cup 2025, demonstrating strong organizational depth and player pool.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section>
+    <div class="section-inner">
+      <div class="accent-box fade-in" style="text-align:center;">
+        <span class="section-tag" style="color:var(--gold);">Get Involved</span>
+        <h2 class="section-title" style="color:var(--white);">Play for FWNS-MD</h2>
+        <p style="opacity:0.8; max-width:500px; margin:0 auto 2rem;">Whether you're a seasoned athlete or just love the game, our sports clubs welcome players of all levels. Become a member to join a team.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="membership.html" class="btn btn-gold">Become a Member</a>
+          <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:var(--white);">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="FWNS-MD"/>
+          <div class="footer-brand-text"><div class="name">Far-Western Nepalese Society</div><div class="sub">Maryland, USA</div></div>
+        </div>
+        <p class="footer-desc">A 501(c)(3) nonprofit organization uniting the Far-Western Nepalese diaspora in Maryland through culture, education, sports, and community support.</p>
+        <div class="footer-social"><a href="https://www.facebook.com/FWNSMD" target="_blank" rel="noopener">f</a></div>
+      </div>
+      <div class="footer-col"><h5>Navigate</h5><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="election.html">Election 2026</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="agm.html">AGM</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Quick Links</h5><ul>
+        <li><a href="membership.html">Join FWNS-MD</a></li>
+        <li><a href="election.html">Election 2026</a></li>
+        <li><a href="assets/FWNSMD_ByLaws.pdf" download>Download Bylaws</a></li>
+        <li><a href="assets/AGM-2026-Report.pdf" download>AGM 2026 Report</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul>
+        <li><a href="mailto:info@fwnsmd.org">info@fwnsmd.org</a></li>
+        <li><a href="https://www.facebook.com/FWNSMD" target="_blank">Facebook</a></li>
+        <li><a href="contact.html">Contact Form</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Far-Western Nepalese Society, Maryland, USA. All Rights Reserved.</p>
+      <div class="ein"><span>EIN: 93-2746265</span><span>·</span><span>501(c)(3) Public Charity</span><span>·</span><span>Incorporated July 15, 2022</span></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
