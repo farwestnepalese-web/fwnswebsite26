@@ -147,6 +147,99 @@
     </div>
   </section>
 
+  <!-- MEMBER VERIFICATION -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div style="text-align:center; max-width:600px; margin:0 auto;" class="fade-in">
+        <span class="section-tag">Member Verification</span>
+        <h2 class="section-title">Verify Your Membership</h2>
+        <p style="color:var(--gray); font-size:0.95rem; margin-bottom:2rem;">Search your name below to check your current membership status with FWNS-MD.</p>
+        <div style="display:flex; gap:0.75rem; margin-bottom:1.5rem;">
+          <input type="text" id="memberSearch" placeholder="Enter your full name..." style="flex:1; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:8px; font-size:0.95rem; font-family:inherit; outline:none;" onkeydown="if(event.key==='Enter') searchMember()"/>
+          <button onclick="searchMember()" class="btn btn-blue" style="white-space:nowrap;">Search</button>
+        </div>
+        <div id="memberResult" style="display:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .result-card { border-radius:12px; padding:1.5rem 2rem; text-align:center; margin-top:0.5rem; }
+    .result-card.found-life { background:#e8f5e9; border:2px solid #4caf50; }
+    .result-card.found-general { background:#fff8e1; border:2px solid var(--gold); }
+    .result-card.found-other { background:#e8f0fb; border:2px solid var(--blue); }
+    .result-card.not-found { background:#fef3f2; border:2px solid #f87171; }
+    .result-card.loading { background:#f4f6f9; border:2px solid var(--border); }
+    .result-icon { font-size:2rem; margin-bottom:0.5rem; }
+    .result-name { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--dark); margin-bottom:0.25rem; }
+    .result-type { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.75rem; }
+    .result-card.found-life .result-type { color:#2e7d32; }
+    .result-card.found-general .result-type { color:#a07c00; }
+    .result-card.found-other .result-type { color:var(--blue); }
+    .result-card.not-found .result-type { color:#dc2626; }
+    .result-msg { font-size:0.875rem; color:var(--gray); line-height:1.6; }
+  </style>
+
+  <script>
+    const SHEET_ID = '1u3gnCJArXvjye6WrHRqvclvAxVGZJsR8mb9jFeYgNJc';
+    const SHEET_NAME = 'Current Members';
+
+    function searchMember() {
+      const query = document.getElementById('memberSearch').value.trim();
+      const resultDiv = document.getElementById('memberResult');
+      if (!query) return;
+
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = '<div class="result-card loading"><div class="result-icon">🔍</div><div class="result-msg">Searching membership records...</div></div>';
+
+      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+      fetch(url)
+        .then(r => r.text())
+        .then(csv => {
+          const rows = csv.trim().split('\n').map(r => r.split(',').map(c => c.replace(/^"|"$/g, '').trim()));
+          const headers = rows[0].map(h => h.toLowerCase());
+          const nameIdx = headers.findIndex(h => h.includes('name'));
+          const typeIdx = headers.findIndex(h => h.includes('membership') || h.includes('type'));
+
+          const match = rows.slice(1).find(row =>
+            row[nameIdx] && row[nameIdx].toLowerCase().includes(query.toLowerCase())
+          );
+
+          if (match) {
+            const name = match[nameIdx];
+            const type = match[typeIdx] || 'Member';
+            const isLife = type.toLowerCase().includes('life');
+            const isGeneral = type.toLowerCase().includes('general');
+            const cardClass = isLife ? 'found-life' : isGeneral ? 'found-general' : 'found-other';
+            const icon = isLife ? '🏅' : '✅';
+            const msg = isLife
+              ? 'You are a verified Life Member of FWNS-MD. Thank you for your lifetime commitment to our community.'
+              : isGeneral
+              ? 'You are a verified General Member. Consider upgrading to Life Membership for lifetime voting rights and greater community impact.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Apply for Life Membership →</a>'
+              : 'You are a verified member of FWNS-MD. Thank you for being part of our community.';
+
+            resultDiv.innerHTML = `<div class="result-card ${cardClass}">
+              <div class="result-icon">${icon}</div>
+              <div class="result-name">${name}</div>
+              <div class="result-type">${type}</div>
+              <div class="result-msg">${msg}</div>
+            </div>`;
+          } else {
+            resultDiv.innerHTML = `<div class="result-card not-found">
+              <div class="result-icon">❌</div>
+              <div class="result-type">Not Found</div>
+              <div class="result-msg">No active membership found for "<strong>${query}</strong>".<br/><br/>
+              If you recently applied, your membership may be pending EC approval. To become a member, <a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">apply here →</a></div>
+            </div>`;
+          }
+        })
+        .catch(() => {
+          resultDiv.innerHTML = '<div class="result-card not-found"><div class="result-icon">⚠️</div><div class="result-type">Error</div><div class="result-msg">Unable to reach membership records. Please try again or contact <a href="mailto:info@fwnsmd.org" style="color:var(--blue);">info@fwnsmd.org</a>.</div></div>';
+        });
+    }
+  </script>
+
   <!-- PAYMENT -->
   <section>
     <div class="section-inner">
