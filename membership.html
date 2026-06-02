@@ -243,8 +243,9 @@
       background:rgba(0,0,0,0.25);
       display:flex; align-items:flex-start; justify-content:space-between; gap:0.5rem;
     }
-    .mc-field label { font-size:0.48rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.38); display:block; margin-bottom:0.15rem; }
-    .mc-field span { font-size:0.75rem; font-weight:600; color:var(--white); }
+    .mc-field { min-width:0; }
+    .mc-field label { font-size:0.45rem; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.38); display:block; margin-bottom:0.15rem; white-space:nowrap; }
+    .mc-field span { font-size:0.72rem; font-weight:600; color:var(--white); white-space:nowrap; }
     .mc-website { font-size:0.48rem; color:#ffffff; text-align:center; padding:0.4rem 1.1rem 0.5rem; background:rgba(0,0,0,0.15); }
   </style>
 
@@ -351,7 +352,7 @@
       const isLife = kind === 'life';
       const expiryDate = new Date();
       expiryDate.setFullYear(expiryDate.getFullYear() + 2);
-      const expiry = isLife ? '' : expiryDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      const expiry = isLife ? '' : expiryDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
       const initials = getInitials(name);
       const badgeHtml = isLife
         ? `<div class="mc-badge">✓ Lifetime Member</div>`
