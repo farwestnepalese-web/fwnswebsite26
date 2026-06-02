@@ -309,7 +309,7 @@
               msg = 'You are a verified member of FWNS-MD. Thank you for being part of our community.';
             }
             const cardBtn = (!isDiscontinued)
-              ? `<br/><br/><button onclick="showMemberCard('${name.replace(/'/g,"\\'")}','${type.replace(/'/g,"\\'")}','${isLife ? 'life' : 'general'}')" style="background:var(--blue);color:#fff;border:none;padding:0.55rem 1.25rem;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;margin-top:0.5rem;">🪪 Get My Digital Card</button>`
+              ? `<br/><br/><button onclick="showMemberCard('${name.replace(/'/g,"\\'")}','${type.replace(/'/g,"\\'")}','${isLife ? 'life' : 'general'}',${isNew || isRenewed})" style="background:var(--blue);color:#fff;border:none;padding:0.55rem 1.25rem;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;margin-top:0.5rem;">🪪 Get My Digital Card</button>`
               : '';
             const memberId = getMemberId(name, isLife ? 'life' : 'general');
             return `<div class="result-card ${cardClass}" style="margin-bottom:1rem;">
@@ -348,11 +348,18 @@
       return (kind === 'life' ? 'L' : 'G') + '-' + num;
     }
 
-    function showMemberCard(name, type, kind) {
+    function showMemberCard(name, type, kind, freshMember) {
       const isLife = kind === 'life';
-      const expiryDate = new Date();
-      expiryDate.setFullYear(expiryDate.getFullYear() + 2);
-      const expiry = isLife ? '' : expiryDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      let expiry = '';
+      if (!isLife) {
+        if (freshMember) {
+          const expiryDate = new Date();
+          expiryDate.setFullYear(expiryDate.getFullYear() + 2);
+          expiry = expiryDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        } else {
+          expiry = 'Jul 2026';
+        }
+      }
       const initials = getInitials(name);
       const badgeHtml = isLife
         ? `<div class="mc-badge">✓ Lifetime Member</div>`
