@@ -269,6 +269,7 @@
           const headers = rows[0].map(h => h.toLowerCase());
           const nameIdx = headers.findIndex(h => h.includes('name'));
           const typeIdx = headers.findIndex(h => h.includes('membership') || h.includes('type'));
+          const noteIdx = headers.findIndex(h => h.includes('note'));
 
           // Match if every word in the query appears somewhere in the name
           const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
@@ -281,19 +282,31 @@
           function buildCard(row) {
             const name = row[nameIdx];
             const type = row[typeIdx] || 'Member';
+            const note = (noteIdx >= 0 && row[noteIdx]) ? row[noteIdx].toLowerCase() : '';
             const typeLower = type.toLowerCase();
             const isLife = typeLower.includes('life');
             const isDiscontinued = typeLower.includes('student') || typeLower.includes('senior');
             const isGeneral = typeLower.includes('general') && !isDiscontinued;
+            const isNew = /new\s*member|new\s*join|newly|joined/.test(note);
+            const isRenewed = /renew/.test(note);
+            const issueDate = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
             const cardClass = isLife ? 'found-life' : isDiscontinued ? 'not-found' : isGeneral ? 'found-general' : 'found-other';
             const icon = isLife ? '🏅' : isDiscontinued ? '⚠️' : '✅';
-            const msg = isLife
-              ? 'You are a verified Life Member of FWNS-MD. Thank you for your lifetime commitment to our community.'
-              : isDiscontinued
-              ? `Your previous membership type (<strong>${type}</strong>) has been discontinued as per the amended FWNS-MD bylaws. You will need to renew as a <strong>General Member</strong> or upgrade to <strong>Life Member</strong> to remain an active member in good standing.<br/><br/>Please renew by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew Membership →</a>`
-              : isGeneral
-              ? 'You are a verified General Member. Please renew your membership by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/>Consider upgrading to Life Membership for lifetime voting rights and greater community impact.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew or Upgrade Membership →</a>'
-              : 'You are a verified member of FWNS-MD. Thank you for being part of our community.';
+
+            let msg;
+            if (isLife) {
+              msg = 'You are a verified Life Member of FWNS-MD. Thank you for your lifetime commitment to our community.';
+            } else if (isDiscontinued) {
+              msg = `Your previous membership type (<strong>${type}</strong>) has been discontinued as per the amended FWNS-MD bylaws. You will need to renew as a <strong>General Member</strong> or upgrade to <strong>Life Member</strong> to remain an active member in good standing.<br/><br/>Please renew by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew Membership →</a>`;
+            } else if (isGeneral && isNew) {
+              msg = `Welcome to FWNS-MD! 🎉 Your membership was issued on <strong>${issueDate}</strong>. We're excited to have you as a new General Member.<br/><br/>Please renew by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Upgrade to Life Membership →</a>`;
+            } else if (isGeneral && isRenewed) {
+              msg = `Your General Membership was successfully renewed on <strong>${issueDate}</strong>. Thank you for continuing your support of FWNS-MD!<br/><br/>Membership is valid through <strong>July 2026</strong>. Consider upgrading to Life Membership for lifetime voting rights.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Upgrade to Life Membership →</a>`;
+            } else if (isGeneral) {
+              msg = `You are a verified General Member. Please renew your membership by <strong>June 13, 2026</strong> to maintain your voting eligibility for Election 2026.<br/><br/>Consider upgrading to Life Membership for lifetime voting rights and greater community impact.<br/><br/><a href="https://forms.gle/TEcvwWQAQ7D7t9tz5" target="_blank" style="color:var(--blue);font-weight:600;">Renew or Upgrade Membership →</a>`;
+            } else {
+              msg = 'You are a verified member of FWNS-MD. Thank you for being part of our community.';
+            }
             const cardBtn = (!isDiscontinued)
               ? `<br/><br/><button onclick="showMemberCard('${name.replace(/'/g,"\\'")}','${type.replace(/'/g,"\\'")}','${isLife ? 'life' : 'general'}')" style="background:var(--blue);color:#fff;border:none;padding:0.55rem 1.25rem;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;margin-top:0.5rem;">🪪 Get My Digital Card</button>`
               : '';
