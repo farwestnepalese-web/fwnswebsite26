@@ -349,7 +349,9 @@
 
     function showMemberCard(name, type, kind) {
       const isLife = kind === 'life';
-      const expiry = isLife ? '' : 'July 2026';
+      const expiryDate = new Date();
+      expiryDate.setFullYear(expiryDate.getFullYear() + 2);
+      const expiry = isLife ? '' : expiryDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
       const initials = getInitials(name);
       const badgeHtml = isLife
         ? `<div class="mc-badge">✓ Lifetime Member</div>`
