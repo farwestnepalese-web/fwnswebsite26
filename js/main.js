@@ -21,69 +21,75 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ── Google Translate — floating Nepali / English button ──
+// ── Language toggle: English / Nepali ──────────────────
 (function injectTranslate() {
-  // Create floating translate button
-  const floater = document.createElement('div');
-  floater.id = 'translate-floater';
-  floater.innerHTML = `
-    <div id="translate-label">🌐 भाषा</div>
-    <div id="google_translate_element"></div>
-  `;
-  document.body.appendChild(floater);
+  let isNepali = false;
+
+  // Hidden Google Translate element
+  const gtDiv = document.createElement('div');
+  gtDiv.id = 'google_translate_element';
+  gtDiv.style.display = 'none';
+  document.body.appendChild(gtDiv);
+
+  // Floating button
+  const btn = document.createElement('button');
+  btn.id = 'lang-btn';
+  btn.innerHTML = '🌐 नेपाली';
+  btn.title = 'Translate to Nepali / English';
+  document.body.appendChild(btn);
 
   const style = document.createElement('style');
   style.textContent = `
-    #translate-floater {
+    #lang-btn {
       position: fixed;
       bottom: 1.5rem;
       left: 1.5rem;
-      z-index: 9999;
+      z-index: 99999;
       background: #1A3A5C;
-      border-radius: 50px;
-      padding: 0.45rem 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
-    #translate-label {
-      font-size: 0.72rem;
-      font-weight: 700;
       color: #fff;
-      white-space: nowrap;
-      pointer-events: none;
+      border: none;
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      font-family: inherit;
+      transition: background 0.2s;
     }
-    #google_translate_element .goog-te-gadget-simple {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      font-size: 0.72rem !important;
-    }
-    #google_translate_element .goog-te-gadget-simple a,
-    #google_translate_element .goog-te-gadget-simple span {
-      color: #D4A017 !important;
-      font-weight: 700 !important;
-      text-decoration: none !important;
-    }
-    #google_translate_element .goog-te-gadget-simple img { display:none !important; }
+    #lang-btn:hover { background: #D4A017; color: #1A3A5C; }
     .goog-te-banner-frame, .goog-te-balloon-frame { display:none !important; }
     body { top: 0 !important; }
-    .skiptranslate:not(#translate-floater) { display:none !important; }
   `;
   document.head.appendChild(style);
 
+  // Load Google Translate
   window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
       includedLanguages: 'ne,en',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
       autoDisplay: false
     }, 'google_translate_element');
   };
-
   const script = document.createElement('script');
   script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
   script.async = true;
   document.body.appendChild(script);
+
+  // Button click — pick Nepali or English from the hidden select
+  btn.addEventListener('click', function() {
+    const select = document.querySelector('.goog-te-combo');
+    if (!select) { alert('Translate is still loading, please try again in a second.'); return; }
+    if (!isNepali) {
+      select.value = 'ne';
+      select.dispatchEvent(new Event('change'));
+      btn.innerHTML = '🌐 English';
+      isNepali = true;
+    } else {
+      select.value = '';
+      select.dispatchEvent(new Event('change'));
+      btn.innerHTML = '🌐 नेपाली';
+      isNepali = false;
+    }
+  });
 })();
