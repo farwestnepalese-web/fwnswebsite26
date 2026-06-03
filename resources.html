@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Resources · Far-Western Nepalese Society, Maryland</title>
+  <meta name="description" content="Helpful resources for FWNS-MD community members — MVA, job training, health insurance, immigration, legal aid, and more."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    .resource-section { margin-bottom: 3rem; }
+    .resource-section-title {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: var(--blue);
+      margin-bottom: 1.25rem; padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .resource-section-title .icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--blue); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .resource-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .resource-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--blue); }
+    .resource-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .resource-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; flex: 1; margin-bottom: 0.85rem; }
+    .resource-card a.resource-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.78rem; font-weight: 700; color: var(--blue);
+      text-decoration: none; border: 1.5px solid var(--blue);
+      border-radius: 6px; padding: 0.35rem 0.75rem;
+      transition: background 0.2s, color 0.2s;
+      align-self: flex-start;
+    }
+    .resource-card a.resource-btn:hover { background: var(--blue); color: #fff; }
+    .resource-card .tag {
+      display: inline-block; font-size: 0.6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.15rem 0.5rem; border-radius: 20px;
+      margin-bottom: 0.5rem;
+    }
+    .tag-free { background: #e8f5e9; color: #2e7d32; }
+    .tag-state { background: #e8f0fb; color: var(--blue); }
+    .tag-federal { background: #fff3e0; color: #e65100; }
+    .tag-city { background: #fce4ec; color: #c62828; }
+
+    .resources-intro {
+      background: linear-gradient(135deg, #1A3A5C, #0f2440);
+      border-radius: 14px; padding: 1.75rem 2rem;
+      color: #fff; margin-bottom: 2.5rem;
+    }
+    .resources-intro h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--gold); }
+    .resources-intro p { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin: 0; }
+
+    .jump-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .jump-links a {
+      font-size: 0.78rem; font-weight: 600; color: var(--blue);
+      background: #f0f4fa; border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 0.3rem 0.85rem;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .jump-links a:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="FWNS-MD Logo"/>
+    <div class="nav-brand-text">
+      <span class="name">Far-Western Nepalese Society</span>
+      <span class="sub">Maryland, USA · Est. 2019</span>
+    </div>
+  </a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a class="dropdown-toggle">About</a>
+      <ul class="nav-dropdown">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="programs.html">Programs</a></li>
+      </ul>
+    </li>
+    <li><a href="membership.html">Membership</a></li>
+    <li>
+      <a class="dropdown-toggle active">Community</a>
+      <ul class="nav-dropdown">
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="resources.html">Community Resources</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class="dropdown-toggle">Governance</a>
+      <ul class="nav-dropdown">
+        <li><a href="election.html">Election 2026</a></li>
+        <li><a href="documents.html">Documents</a></li>
+        <li><a href="agm.html">AGM</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="membership.html" class="btn-nav">Join Us</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Community Resources</span></div>
+    <h1>Community Resources</h1>
+    <p>Helpful information and official links for community members navigating life in Maryland.</p>
+  </div>
+
+  <section style="background: var(--white);">
+    <div class="section-inner">
+
+      <div class="resources-intro fade-in">
+        <h3>How to use this page</h3>
+        <p>We have compiled the most useful government, health, immigration, and job resources for our community. Each card links directly to the official website. If you need help understanding or navigating any of these resources, reach out to us at <a href="mailto:info@fwnsmd.org" style="color:var(--gold);">info@fwnsmd.org</a> — we are happy to assist.</p>
+      </div>
+
+      <!-- Quick Jump Links -->
+      <div class="jump-links fade-in">
+        <a href="#mva">🚗 MVA / Driver's License</a>
+        <a href="#jobs">💼 Job Training</a>
+        <a href="#health">🏥 Health & Insurance</a>
+        <a href="#immigration">🛂 Immigration</a>
+        <a href="#education">🎓 Education & Language</a>
+        <a href="#legal">⚖️ Legal Aid</a>
+        <a href="#financial">💰 Financial Help</a>
+        <a href="#housing">🏠 Housing</a>
+      </div>
+
+      <!-- MVA -->
+      <div class="resource-section fade-in" id="mva">
+        <div class="resource-section-title">
+          <div class="icon">🚗</div>
+          MVA — Driver's License, State ID & Permits
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Driver's License</h4>
+            <p>Apply for a Maryland driver's license. You will need proof of identity, residency, and Social Security Number (or ineligibility letter). Real ID compliant.</p>
+            <a href="https://mva.maryland.gov/drivers/Pages/getting-your-license.aspx" target="_blank" rel="noopener" class="resource-btn">Visit MVA →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Learner's Permit</h4>
+            <p>Get your learner's permit before getting a full license. Must pass a knowledge test at an MVA branch. Minimum age is 15 years and 9 months.</p>
+            <a href="https://mva.maryland.gov/drivers/Pages/learners-permit.aspx" target="_blank" rel="noopener" class="resource-btn">Visit MVA →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland State ID</h4>
+            <p>A State ID is for those who do not drive. Accepted as official photo ID for work, banking, and government services. Also available as Real ID.</p>
+            <a href="https://mva.maryland.gov/drivers/Pages/state-id.aspx" target="_blank" rel="noopener" class="resource-btn">Visit MVA →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Schedule an MVA Appointment</h4>
+            <p>Book your appointment online to avoid long wait times at the MVA branch. Services include licenses, IDs, title transfers, and more.</p>
+            <a href="https://mva.maryland.gov/Pages/branch-offices.aspx" target="_blank" rel="noopener" class="resource-btn">Book Appointment →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Vehicle Registration & Titling</h4>
+            <p>Register your car or transfer a title in Maryland. Required within 60 days of moving to Maryland or purchasing a vehicle.</p>
+            <a href="https://mva.maryland.gov/vehicles/Pages/default.aspx" target="_blank" rel="noopener" class="resource-btn">Visit MVA →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Training -->
+      <div class="resource-section fade-in" id="jobs">
+        <div class="resource-section-title">
+          <div class="icon">💼</div>
+          Job Training & Workforce Programs
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-city">Baltimore City</span>
+            <h4>Mayor's Office of Employment Development (MOED)</h4>
+            <p>Free job training, career coaching, resume help, and job placement for Baltimore City residents. Programs include trades, healthcare, IT, and more.</p>
+            <a href="https://moed.baltimorecity.gov/" target="_blank" rel="noopener" class="resource-btn">Visit MOED →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland Apprenticeship & Training</h4>
+            <p>Earn while you learn — apprenticeship programs in plumbing, HVAC, electrical, construction, and other skilled trades. Paid on-the-job training.</p>
+            <a href="https://www.dllr.state.md.us/labor/appr/" target="_blank" rel="noopener" class="resource-btn">Learn More →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>HVAC & Trades Training — CCBC</h4>
+            <p>Community College of Baltimore County (CCBC) offers affordable HVAC, electrical, and plumbing certification programs. Some scholarships available.</p>
+            <a href="https://www.ccbcmd.edu/Programs-and-Courses/Schools-and-Departments/School-of-Technology/index.aspx" target="_blank" rel="noopener" class="resource-btn">View Programs →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland Workforce Exchange</h4>
+            <p>Maryland's official job board — search jobs, find training programs, and connect with American Job Centers for free employment assistance.</p>
+            <a href="https://www.mwejobs.maryland.gov/" target="_blank" rel="noopener" class="resource-btn">Find Jobs →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>CareerOneStop</h4>
+            <p>US Department of Labor's career resource — find training programs, certifications, and local American Job Centers near you.</p>
+            <a href="https://www.careeronestop.org/" target="_blank" rel="noopener" class="resource-btn">Visit →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-city">Baltimore City</span>
+            <h4>YouthWorks & Job Training for Youth</h4>
+            <p>Summer jobs and year-round employment training for young residents aged 14–24 in Baltimore City. Paid positions available.</p>
+            <a href="https://moed.baltimorecity.gov/youthworks" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Health -->
+      <div class="resource-section fade-in" id="health">
+        <div class="resource-section-title">
+          <div class="icon">🏥</div>
+          Health & Medical Insurance
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland Health Connection (ACA)</h4>
+            <p>Maryland's official health insurance marketplace. Enroll in affordable health, dental, and vision plans. Financial assistance available based on income.</p>
+            <a href="https://www.marylandhealthconnection.gov/" target="_blank" rel="noopener" class="resource-btn">Enroll Now →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free / Low Cost</span>
+            <h4>Medicaid — Maryland Medical Assistance</h4>
+            <p>Free or low-cost health coverage for low-income individuals and families. Covers doctor visits, hospital care, prescriptions, and more.</p>
+            <a href="https://mmcp.health.maryland.gov/" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>Community Health Centers</h4>
+            <p>Federally Qualified Health Centers (FQHCs) offer primary care on a sliding-scale fee regardless of insurance status or ability to pay.</p>
+            <a href="https://findahealthcenter.hrsa.gov/" target="_blank" rel="noopener" class="resource-btn">Find a Center →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland Children's Health Program (MCHP)</h4>
+            <p>Free or low-cost health coverage for children under 19 whose families earn too much for Medicaid but cannot afford private insurance.</p>
+            <a href="https://mmcp.health.maryland.gov/childrenshealthprogram/Pages/Home.aspx" target="_blank" rel="noopener" class="resource-btn">Learn More →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>Mental Health Resources</h4>
+            <p>Maryland's crisis hotline and mental health services. Call 988 (Suicide & Crisis Lifeline) anytime. Free counseling referrals available.</p>
+            <a href="https://health.maryland.gov/bha/Pages/Crisis-Services.aspx" target="_blank" rel="noopener" class="resource-btn">Get Help →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>WIC Program</h4>
+            <p>Free nutrition support, healthy food, breastfeeding help, and healthcare referrals for pregnant women, new mothers, infants, and children under 5.</p>
+            <a href="https://health.maryland.gov/wic/Pages/Home.aspx" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Immigration -->
+      <div class="resource-section fade-in" id="immigration">
+        <div class="resource-section-title">
+          <div class="icon">🛂</div>
+          Immigration — USCIS & Legal Status
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>USCIS — Official Immigration Website</h4>
+            <p>U.S. Citizenship and Immigration Services — apply for green cards, work permits, citizenship, DACA, and check your case status online.</p>
+            <a href="https://www.uscis.gov/" target="_blank" rel="noopener" class="resource-btn">Visit USCIS →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>Check Your Case Status</h4>
+            <p>Track the status of your immigration application using your receipt number on the USCIS case status tool.</p>
+            <a href="https://egov.uscis.gov/casestatus/landing.do" target="_blank" rel="noopener" class="resource-btn">Check Status →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>Apply for Citizenship (N-400)</h4>
+            <p>Ready to become a U.S. citizen? Learn about eligibility, the naturalization process, civics test, and how to file Form N-400.</p>
+            <a href="https://www.uscis.gov/n-400" target="_blank" rel="noopener" class="resource-btn">Learn More →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>USCIS Free Legal Help Finder</h4>
+            <p>Find free or low-cost accredited immigration legal representatives and nonprofit organizations near you. Avoid immigration scams.</p>
+            <a href="https://www.uscis.gov/avoid-scams/find-legal-services" target="_blank" rel="noopener" class="resource-btn">Find Help →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>CASA Maryland — Immigrant Services</h4>
+            <p>Maryland's largest immigrant rights organization. Offers legal help, health services, workforce development, and civic engagement for immigrants.</p>
+            <a href="https://wearecasa.org/" target="_blank" rel="noopener" class="resource-btn">Visit CASA →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>Employment Authorization (EAD)</h4>
+            <p>Apply for or renew your Employment Authorization Document (work permit) with USCIS Form I-765.</p>
+            <a href="https://www.uscis.gov/i-765" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="resource-section fade-in" id="education">
+        <div class="resource-section-title">
+          <div class="icon">🎓</div>
+          Education, ESL & Language
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>ESL Classes — Baltimore City</h4>
+            <p>Free English as a Second Language (ESL) classes for adults through Baltimore City Community College and community centers across the city.</p>
+            <a href="https://www.bccc.edu/esl" target="_blank" rel="noopener" class="resource-btn">Enroll →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>GED Program</h4>
+            <p>Earn your high school equivalency diploma through Maryland's free GED preparation and testing programs.</p>
+            <a href="https://www.marylandgeds.org/" target="_blank" rel="noopener" class="resource-btn">Learn More →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Community College of Baltimore County</h4>
+            <p>Affordable college programs, certifications, and continuing education courses. Financial aid and scholarships available for eligible students.</p>
+            <a href="https://www.ccbcmd.edu/" target="_blank" rel="noopener" class="resource-btn">Visit CCBC →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>Enoch Pratt Free Library</h4>
+            <p>Baltimore's free public library — free internet, computer access, ESL resources, citizenship prep materials, and community programs.</p>
+            <a href="https://www.prattlibrary.org/" target="_blank" rel="noopener" class="resource-btn">Visit →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal Aid -->
+      <div class="resource-section fade-in" id="legal">
+        <div class="resource-section-title">
+          <div class="icon">⚖️</div>
+          Legal Aid & Government Services
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>Maryland Legal Aid</h4>
+            <p>Free civil legal help for low-income Marylanders — covers housing, family law, immigration, public benefits, and more.</p>
+            <a href="https://www.mdlab.org/" target="_blank" rel="noopener" class="resource-btn">Get Help →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland Courts — Self Help Center</h4>
+            <p>Find legal forms, guides, and information to represent yourself in Maryland courts. Available in multiple languages.</p>
+            <a href="https://mdcourts.gov/selfhelp" target="_blank" rel="noopener" class="resource-btn">Visit →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>People's Law Library</h4>
+            <p>Maryland's free online legal resource library. Plain-language guides on tenant rights, family law, employment, and consumer issues.</p>
+            <a href="https://www.peoples-law.org/" target="_blank" rel="noopener" class="resource-btn">Visit →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>Social Security Administration</h4>
+            <p>Apply for Social Security cards, retirement benefits, disability (SSDI), and Supplemental Security Income (SSI).</p>
+            <a href="https://www.ssa.gov/" target="_blank" rel="noopener" class="resource-btn">Visit SSA →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial -->
+      <div class="resource-section fade-in" id="financial">
+        <div class="resource-section-title">
+          <div class="icon">💰</div>
+          Financial Help & Tax Resources
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>VITA — Free Tax Preparation</h4>
+            <p>IRS Volunteer Income Tax Assistance (VITA) offers free federal and state tax preparation for individuals earning under $67,000/year.</p>
+            <a href="https://www.irs.gov/vita" target="_blank" rel="noopener" class="resource-btn">Find a Site →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-federal">Federal</span>
+            <h4>ITIN — Individual Taxpayer ID</h4>
+            <p>Apply for an Individual Taxpayer Identification Number (ITIN) if you are not eligible for a Social Security Number but need to file taxes.</p>
+            <a href="https://www.irs.gov/individuals/individual-taxpayer-identification-number" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland SNAP (Food Assistance)</h4>
+            <p>Apply for the Supplemental Nutrition Assistance Program (food stamps) to help cover grocery costs for eligible households.</p>
+            <a href="https://mydhrbenefits.dhr.state.md.us/" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>211 Maryland — Emergency Assistance</h4>
+            <p>Dial 2-1-1 or visit the website to find emergency financial help, food banks, utility assistance, and social services near you.</p>
+            <a href="https://211md.org/" target="_blank" rel="noopener" class="resource-btn">Visit 211 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Housing -->
+      <div class="resource-section fade-in" id="housing">
+        <div class="resource-section-title">
+          <div class="icon">🏠</div>
+          Housing Resources
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="tag tag-state">State of Maryland</span>
+            <h4>Maryland DHCD — Rental Assistance</h4>
+            <p>Find rental assistance programs, affordable housing listings, and homeownership support through the Maryland Department of Housing.</p>
+            <a href="https://dhcd.maryland.gov/" target="_blank" rel="noopener" class="resource-btn">Visit →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-city">Baltimore City</span>
+            <h4>Baltimore City Housing Authority</h4>
+            <p>Apply for public housing, Section 8 / Housing Choice Vouchers, and find affordable rental listings in Baltimore City.</p>
+            <a href="https://www.habc.org/" target="_blank" rel="noopener" class="resource-btn">Apply →</a>
+          </div>
+          <div class="resource-card">
+            <span class="tag tag-free">Free</span>
+            <h4>Tenant Rights — Maryland</h4>
+            <p>Know your rights as a renter in Maryland. Learn about lease protections, security deposits, eviction rules, and how to file complaints.</p>
+            <a href="https://www.peoples-law.org/housing" target="_blank" rel="noopener" class="resource-btn">Learn More →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Help note -->
+      <div class="accent-box fade-in" style="text-align:center; margin-top: 1rem;">
+        <span class="section-tag" style="color: var(--gold);">Need Help?</span>
+        <h2 class="section-title" style="color: var(--white);">We're here to help you navigate</h2>
+        <p style="opacity: 0.85; max-width: 560px; margin: 0 auto 1.5rem;">If you need help understanding any of these resources, filling out forms, or finding the right program — contact FWNS-MD and a community member will assist you.</p>
+        <a href="contact.html" class="btn btn-gold">Contact Us</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="FWNS-MD"/>
+          <div class="footer-brand-text">
+            <div class="name">Far-Western Nepalese Society</div>
+            <div class="sub">Maryland, USA</div>
+          </div>
+        </div>
+        <p class="footer-desc">A 501(c)(3) nonprofit organization uniting the Far-Western Nepalese diaspora in Maryland.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/FWNSMD" target="_blank" rel="noopener">f</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Navigate</h5><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="resources.html">Community Resources</a></li>
+        <li><a href="election.html">Election 2026</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Resources</h5><ul>
+        <li><a href="resources.html#mva">MVA / Driver's License</a></li>
+        <li><a href="resources.html#jobs">Job Training</a></li>
+        <li><a href="resources.html#health">Health & Insurance</a></li>
+        <li><a href="resources.html#immigration">Immigration (USCIS)</a></li>
+        <li><a href="resources.html#legal">Legal Aid</a></li>
+        <li><a href="resources.html#financial">Financial Help</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul>
+        <li><a href="mailto:info@fwnsmd.org">info@fwnsmd.org</a></li>
+        <li><a href="https://www.facebook.com/FWNSMD" target="_blank">Facebook</a></li>
+        <li><a href="contact.html">Contact Form</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Far-Western Nepalese Society, Maryland, USA. All Rights Reserved.</p>
+      <div class="ein"><span>EIN: 93-2746265</span><span>·</span><span>501(c)(3) Public Charity</span></div>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
