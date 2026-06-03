@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="#1A3A5C"/>
+
+  <!-- Body / Daura Suruwal -->
+  <ellipse cx="50" cy="90" rx="24" ry="15" fill="#D4A017"/>
+
+  <!-- Neck -->
+  <rect x="43" y="68" width="14" height="10" rx="3" fill="#C68642"/>
+
+  <!-- Head -->
+  <circle cx="50" cy="57" r="19" fill="#C68642"/>
+
+  <!-- Ears -->
+  <ellipse cx="31.5" cy="57" rx="2.8" ry="3.8" fill="#C68642"/>
+  <ellipse cx="68.5" cy="57" rx="2.8" ry="3.8" fill="#C68642"/>
+
+  <!-- DHAKA TOPI — traditional asymmetrical Nepali cap -->
+  <!-- The topi sits on head, flat brim, body slopes up to the left -->
+  <!-- Base/brim of topi -->
+  <path d="M30 43 Q50 40 70 43 L68 46 Q50 43 32 46 Z" fill="#8B1A1A"/>
+  <!-- Main topi body — asymmetrical: right side low, left side high -->
+  <path d="M32 46 Q34 35 42 28 Q50 24 60 27 Q67 30 68 46 Z" fill="#B22222"/>
+  <!-- Dhaka fabric pattern on topi -->
+  <!-- Horizontal stripes -->
+  <path d="M34 42 Q51 39 67 42" stroke="#D4A017" stroke-width="1" fill="none"/>
+  <path d="M34.5 38.5 Q51 36 66.5 38.5" stroke="#D4A017" stroke-width="0.9" fill="none"/>
+  <path d="M36 35 Q51 32.5 65 35" stroke="#FFD700" stroke-width="0.8" fill="none" opacity="0.7"/>
+  <!-- Diagonal cross pattern (Dhaka weave) -->
+  <line x1="40" y1="46" x2="44" y2="27" stroke="#FFD700" stroke-width="0.7" opacity="0.5"/>
+  <line x1="50" y1="46" x2="52" y2="24" stroke="#FFD700" stroke-width="0.7" opacity="0.5"/>
+  <line x1="60" y1="46" x2="60" y2="27" stroke="#FFD700" stroke-width="0.7" opacity="0.5"/>
+  <!-- Diamond motif center -->
+  <path d="M46 33 L50 28 L54 33 L50 38 Z" fill="#D4A017" opacity="0.8"/>
+  <!-- Top fold of topi (the angled peak going left) -->
+  <path d="M42 28 Q38 24 36 22 Q40 21 46 25 Q44 26 42 28 Z" fill="#8B1A1A"/>
+
+  <!-- Eyes -->
+  <ellipse cx="44" cy="57" rx="3.2" ry="3.5" fill="#1a0a00"/>
+  <ellipse cx="56" cy="57" rx="3.2" ry="3.5" fill="#1a0a00"/>
+  <circle cx="45.3" cy="55.8" r="1.1" fill="white"/>
+  <circle cx="57.3" cy="55.8" r="1.1" fill="white"/>
+
+  <!-- Eyebrows -->
+  <path d="M40.5 52.5 Q44 51 47.5 52.5" stroke="#3B1F0A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M52.5 52.5 Q56 51 59.5 52.5" stroke="#3B1F0A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <path d="M48.5 60 Q50 62 51.5 60" stroke="#A0612A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Smile -->
+  <path d="M44.5 64 Q50 69 55.5 64" stroke="#3B1F0A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+</svg>
