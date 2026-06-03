@@ -23,9 +23,47 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // ── Language toggle: English / Nepali ──────────────────
 (function() {
+  // Check current language from cookie
+  function getLang() {
+    const match = document.cookie.match(/googtrans=\/en\/(\w+)/);
+    return match ? match[1] : 'en';
+  }
+
+  function setLang(lang) {
+    const domain = window.location.hostname;
+    if (lang === 'en') {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + domain;
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+    } else {
+      document.cookie = 'googtrans=/en/' + lang + '; path=/; domain=' + domain;
+      document.cookie = 'googtrans=/en/' + lang + '; path=/';
+    }
+    window.location.reload();
+  }
+
+  const isNepali = getLang() === 'ne';
+
+  // Inject hidden Google Translate widget (needed for cookie to work)
+  const gtDiv = document.createElement('div');
+  gtDiv.id = 'google_translate_element';
+  gtDiv.style.cssText = 'position:absolute;top:-9999px;left:-9999px;';
+  document.body.appendChild(gtDiv);
+
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'ne,en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  };
+  const gtScript = document.createElement('script');
+  gtScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  document.body.appendChild(gtScript);
+
+  // Button
   const btn = document.createElement('button');
   btn.id = 'lang-btn';
-  btn.innerHTML = '🌐 नेपाली';
+  btn.innerHTML = isNepali ? '🌐 English' : '🌐 नेपाली';
 
   const style = document.createElement('style');
   style.textContent = `
@@ -38,42 +76,23 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       color: #fff;
       border: none;
       border-radius: 50px;
-      padding: 0.55rem 1.1rem;
+      padding: 0.55rem 1.2rem;
       font-size: 0.82rem;
       font-weight: 700;
-      cursor: pointer !important;
-      pointer-events: all !important;
+      cursor: pointer;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       font-family: inherit;
       transition: background 0.2s, transform 0.1s;
-      user-select: none;
     }
     #lang-btn:hover { background: #D4A017; color: #1A3A5C; transform: scale(1.05); }
     #lang-btn:active { transform: scale(0.97); }
-
-    /* Bigger Chatbase bubble */
-    #chatbase-bubble-button {
-      width: 64px !important;
-      height: 64px !important;
-      bottom: 1.5rem !important;
-      right: 1.5rem !important;
-    }
-    #chatbase-bubble-button img,
-    #chatbase-bubble-button svg {
-      width: 36px !important;
-      height: 36px !important;
-    }
+    .goog-te-banner-frame { display:none !important; }
+    body { top: 0 !important; }
   `;
   document.head.appendChild(style);
   document.body.appendChild(btn);
 
-  // Click opens page in Google Translate (Nepali) — no script dependency
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    const currentUrl = encodeURIComponent(window.location.href);
-    window.open(
-      'https://translate.google.com/translate?sl=en&tl=ne&u=' + currentUrl,
-      '_blank'
-    );
+  btn.addEventListener('click', function() {
+    setLang(isNepali ? 'en' : 'ne');
   });
 })();
