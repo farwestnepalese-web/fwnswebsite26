@@ -15,6 +15,36 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
 });
 
+// ── Force Chatbase bubble bigger ────────────────────────
+(function resizeChatbot() {
+  const css = `
+    [id*="chatbase"] iframe, [class*="chatbase"] iframe { display:block !important; }
+    /* target the floating bubble button */
+    div[style*="z-index: 2147483647"] > div:last-child,
+    div[style*="z-index:2147483647"] > div:last-child {
+      width: 68px !important;
+      height: 68px !important;
+      min-width: 68px !important;
+      min-height: 68px !important;
+    }
+  `;
+  const s = document.createElement('style');
+  s.textContent = css;
+  document.head.appendChild(s);
+
+  // Also try after chatbase loads via MutationObserver
+  const mo = new MutationObserver(() => {
+    const bubble = document.querySelector('div[style*="z-index: 2147483647"] > div:last-child, div[style*="z-index:2147483647"] > div:last-child');
+    if (bubble) {
+      bubble.style.width  = '68px';
+      bubble.style.height = '68px';
+      bubble.style.minWidth  = '68px';
+      bubble.style.minHeight = '68px';
+    }
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+})();
+
 // Fade-in on scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
