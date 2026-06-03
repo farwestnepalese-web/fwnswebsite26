@@ -21,41 +21,55 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ── Google Translate — Nepali / English toggle ──────────
+// ── Google Translate — floating Nepali / English button ──
 (function injectTranslate() {
-  const navLinks = document.querySelector('.nav-links');
-  if (!navLinks) return;
+  // Create floating translate button
+  const floater = document.createElement('div');
+  floater.id = 'translate-floater';
+  floater.innerHTML = `
+    <div id="translate-label">🌐 भाषा</div>
+    <div id="google_translate_element"></div>
+  `;
+  document.body.appendChild(floater);
 
-  // Inject as a list item before the Join Us button
-  const li = document.createElement('li');
-  li.id = 'translate-li';
-  li.innerHTML = '<div id="google_translate_element"></div>';
-  navLinks.appendChild(li);
-
-  // Styles
   const style = document.createElement('style');
   style.textContent = `
-    #translate-li { display:flex; align-items:center; }
+    #translate-floater {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 9999;
+      background: #1A3A5C;
+      border-radius: 50px;
+      padding: 0.45rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    #translate-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      pointer-events: none;
+    }
     #google_translate_element .goog-te-gadget-simple {
-      background: #f0f4fa !important;
-      border: 1.5px solid #d0d8e8 !important;
-      border-radius: 6px !important;
-      padding: 3px 8px !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
       font-size: 0.72rem !important;
-      cursor: pointer;
     }
-    #google_translate_element .goog-te-gadget-simple a {
-      color: #1A3A5C !important;
-      font-weight: 600 !important;
-      text-decoration: none !important;
-    }
+    #google_translate_element .goog-te-gadget-simple a,
     #google_translate_element .goog-te-gadget-simple span {
-      color: #1A3A5C !important;
+      color: #D4A017 !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
     }
     #google_translate_element .goog-te-gadget-simple img { display:none !important; }
     .goog-te-banner-frame, .goog-te-balloon-frame { display:none !important; }
     body { top: 0 !important; }
-    .skiptranslate:not(#google_translate_element) { display:none !important; }
+    .skiptranslate:not(#translate-floater) { display:none !important; }
   `;
   document.head.appendChild(style);
 
