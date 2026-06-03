@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Hide Google Translate toolbar */
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover { display: none !important; }
+body { top: 0 !important; }
+.skiptranslate > iframe { height: 0 !important; border: none !important; }
+
 :root {
   --red:    #C0392B;
   --blue:   #1A3A5C;
