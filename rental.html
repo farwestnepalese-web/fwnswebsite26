@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Equipment Rental · Far-Western Nepalese Society, Maryland</title>
+  <meta name="description" content="Rent equipment from FWNS-MD for your event. Tables, chairs, tents, sound systems, and more. Members $75 · Non-Members $150."/>
+  <link rel="icon" href="assets/logo.png"/>
+  <link rel="stylesheet" href="css/style.css?v=2"/>
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── Pricing Banner ── */
+    .rental-pricing {
+      display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .price-card {
+      flex: 1; min-width: 200px;
+      border-radius: 14px; padding: 1.5rem 1.75rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .price-card.member {
+      background: linear-gradient(135deg, #1A3A5C, #0f2440);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(26,58,92,0.25);
+    }
+    .price-card.nonmember {
+      background: var(--white);
+      border: 2px solid var(--border);
+      color: var(--dark);
+    }
+    .price-card .label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+    .price-card.member .label { color: var(--gold); opacity: 1; }
+    .price-card .amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 700; line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .price-card.member .amount { color: #fff; }
+    .price-card.nonmember .amount { color: var(--blue); }
+    .price-card .sub { font-size: 0.78rem; opacity: 0.7; }
+    .price-card.member .sub { color: rgba(255,255,255,0.75); }
+    .price-card .badge {
+      position: absolute; top: 10px; right: -18px;
+      background: var(--gold); color: #1A3A5C;
+      font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 0.2rem 1.5rem;
+      transform: rotate(35deg);
+    }
+
+    /* ── Intro notice ── */
+    .rental-notice {
+      background: linear-gradient(135deg, #1A3A5C, #0f2440);
+      border-radius: 14px; padding: 1.5rem 1.75rem;
+      color: #fff; margin-bottom: 2.5rem;
+    }
+    .rental-notice h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .rental-notice p { font-size: 0.86rem; color: rgba(255,255,255,0.82); line-height: 1.7; margin: 0; }
+    .rental-notice a { color: var(--gold); }
+
+    /* ── Form card ── */
+    .rental-form-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+    @media(max-width:600px){ .rental-form-card { padding: 1.5rem 1.25rem; } }
+
+    .form-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--blue);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .form-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .form-group { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group.full { flex: 100% 0 0; min-width: 100%; }
+
+    label.field-label {
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--dark); letter-spacing: 0.03em;
+    }
+    label.field-label .req { color: #e53935; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%; padding: 0.6rem 0.85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px; font-family: inherit;
+      font-size: 0.88rem; color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,58,92,0.1);
+      background: #fff;
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    /* ── Member status radio ── */
+    .radio-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .radio-option {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: #f5f7fa; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 0.55rem 1rem;
+      cursor: pointer; font-size: 0.86rem; font-weight: 600;
+      color: var(--dark); transition: all 0.2s; flex: 1; min-width: 160px;
+      justify-content: center;
+    }
+    .radio-option input[type="radio"] { accent-color: var(--blue); width: 16px; height: 16px; }
+    .radio-option:has(input:checked) {
+      border-color: var(--blue); background: #e8f0fb; color: var(--blue);
+    }
+
+    /* ── Equipment checkboxes ── */
+    .equip-grid { display: flex; flex-direction: column; gap: 0.6rem; }
+    .equip-item { display: flex; flex-direction: column; gap: 0; }
+    .equip-label {
+      display: flex; align-items: center; gap: 0.65rem;
+      background: #f5f7fa; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 0.6rem 0.9rem;
+      cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--dark);
+      transition: all 0.2s; user-select: none;
+    }
+    .equip-label input[type="checkbox"] { accent-color: var(--blue); width: 16px; height: 16px; flex-shrink: 0; }
+    .equip-label:has(input:checked) {
+      border-color: var(--blue); background: #e8f0fb; color: var(--blue);
+      border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+    }
+    .equip-avail-note {
+      display: none;
+      background: #fff8e1; border: 1.5px solid #ffe082;
+      border-top: none;
+      border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;
+      padding: 0.5rem 0.9rem 0.6rem;
+      font-size: 0.77rem; color: #7b5800; line-height: 1.55;
+    }
+    .equip-other-input {
+      display: none;
+      margin-top: 0.4rem;
+    }
+
+    /* ── Availability general notice ── */
+    .avail-notice {
+      background: #fff8e1; border: 1.5px solid #ffe082;
+      border-radius: 10px; padding: 0.85rem 1rem;
+      font-size: 0.8rem; color: #7b5800; line-height: 1.6;
+      margin-bottom: 1.25rem;
+      display: flex; gap: 0.6rem;
+    }
+    .avail-notice .icon { flex-shrink: 0; font-size: 1rem; }
+
+    /* ── Waiver section ── */
+    .waiver-box {
+      background: #fafbfc; border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 1.25rem 1.4rem;
+      font-size: 0.82rem; color: var(--gray); line-height: 1.8;
+      margin-bottom: 1.25rem; max-height: 200px; overflow-y: auto;
+    }
+    .waiver-box strong { color: var(--dark); }
+
+    .waiver-confirm {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      background: #fff3e0; border: 1.5px solid #ffcc80;
+      border-radius: 8px; padding: 0.75rem 1rem;
+      font-size: 0.82rem; color: #5d3b00; line-height: 1.5; cursor: pointer;
+    }
+    .waiver-confirm input[type="checkbox"] { accent-color: #e65100; width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── Payment section ── */
+    .payment-box {
+      background: linear-gradient(135deg, #f0fdf4, #e8f5e9);
+      border: 1.5px solid #a5d6a7; border-radius: 12px;
+      padding: 1.4rem 1.6rem; margin-bottom: 2rem;
+    }
+    .payment-box h4 {
+      font-family: 'Playfair Display', serif; font-size: 1rem;
+      color: #1b5e20; margin-bottom: 0.6rem;
+    }
+    .payment-box p { font-size: 0.84rem; color: #2e7d32; line-height: 1.7; margin: 0 0 0.35rem; }
+    .payment-box .zelle {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #6600cc; color: #fff; border-radius: 6px;
+      padding: 0.3rem 0.8rem; font-size: 0.82rem; font-weight: 700;
+      margin: 0.4rem 0;
+    }
+
+    /* ── Submit button ── */
+    .btn-submit {
+      display: block; width: 100%;
+      background: linear-gradient(135deg, #1A3A5C, #0f2440);
+      color: #fff; border: none; border-radius: 10px;
+      padding: 0.9rem 2rem; font-size: 1rem; font-weight: 700;
+      font-family: inherit; cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      box-shadow: 0 4px 16px rgba(26,58,92,0.25);
+    }
+    .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ── Success message ── */
+    #rental-success {
+      display: none;
+      background: linear-gradient(135deg, #1A3A5C, #0f2440);
+      color: #fff; border-radius: 16px;
+      padding: 3rem 2rem; text-align: center; margin-bottom: 2rem;
+    }
+    #rental-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    #rental-success h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 0.75rem; }
+    #rental-success p { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 480px; margin: 0 auto 0.5rem; }
+
+    /* ── Error messages ── */
+    .field-error { font-size: 0.75rem; color: #e53935; margin-top: 0.2rem; display: none; }
+    .field-error.show { display: block; }
+    input.error, select.error, textarea.error { border-color: #e53935 !important; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/logo.png" alt="FWNS-MD Logo"/>
+    <div class="nav-brand-text">
+      <span class="name">Far-Western Nepalese Society</span>
+      <span class="sub">Maryland, USA · Est. 2019</span>
+    </div>
+  </a>
+  <div class="nav-toggle"><span></span><span></span><span></span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a class="dropdown-toggle">About</a>
+      <ul class="nav-dropdown">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="programs.html">Programs</a></li>
+      </ul>
+    </li>
+    <li><a href="membership.html">Membership</a></li>
+    <li>
+      <a class="dropdown-toggle active">Community</a>
+      <ul class="nav-dropdown">
+        <li><a href="sports.html">Sports</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="resources.html">Community Resources</a></li>
+        <li><a href="rental.html">Equipment Rentals</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class="dropdown-toggle">Governance</a>
+      <ul class="nav-dropdown">
+        <li><a href="election.html">Election 2026</a></li>
+        <li><a href="documents.html">Documents</a></li>
+        <li><a href="agm.html">AGM</a></li>
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="membership.html" class="btn-nav">Join Us</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Equipment Rental</span></div>
+    <h1>Equipment Rental</h1>
+    <p>Borrow equipment for your next event. Available to FWNS-MD members and the broader community.</p>
+  </div>
+
+  <section style="background: var(--white);">
+    <div class="section-inner">
+
+      <!-- Pricing -->
+      <div class="rental-pricing fade-in">
+        <div class="price-card member">
+          <div class="badge">Best Value</div>
+          <div class="label">FWNS-MD Members</div>
+          <div class="amount">$75</div>
+          <div class="sub">per rental request</div>
+        </div>
+        <div class="price-card nonmember">
+          <div class="label">Non-Members</div>
+          <div class="amount">$150</div>
+          <div class="sub">per rental request</div>
+        </div>
+      </div>
+
+      <!-- Availability notice -->
+      <div class="rental-notice fade-in">
+        <h3>📋 Important — Read Before Requesting</h3>
+        <p>All equipment availability is subject to verification by the Executive Committee. <strong style="color:#fff;">Submitting this form does not guarantee availability.</strong> You will be contacted within <strong style="color:#fff;">2–3 business days</strong> to confirm your rental. For urgent inquiries, email us directly at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a>.</p>
+      </div>
+
+      <!-- Success message (shown after submit) -->
+      <div id="rental-success">
+        <div class="success-icon">✅</div>
+        <h3>Request Submitted!</h3>
+        <p>Thank you for your rental request. Our team will review availability and contact you within <strong>2–3 business days</strong> to confirm.</p>
+        <p style="margin-top:1rem;">Once confirmed, please complete your payment via <strong>Zelle to farwestnepalese@gmail.com</strong> to secure your booking. Members pay <strong>$75</strong>, Non-members pay <strong>$150</strong>.</p>
+      </div>
+
+      <!-- THE FORM -->
+      <form id="rental-form" novalidate>
+
+        <!-- Section 1: Contact Info -->
+        <div class="rental-form-card fade-in">
+          <div class="form-section-title">👤 Contact Information</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="field-label" for="full-name">Full Name <span class="req">*</span></label>
+              <input type="text" id="full-name" name="full_name" placeholder="e.g. Ram Bahadur Shahi" required/>
+              <span class="field-error" id="err-name">Please enter your full name.</span>
+            </div>
+            <div class="form-group">
+              <label class="field-label" for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+              <span class="field-error" id="err-email">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="field-label" for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(301) 555-0000" required/>
+              <span class="field-error" id="err-phone">Please enter your phone number.</span>
+            </div>
+            <div class="form-group">
+              <label class="field-label">Membership Status <span class="req">*</span></label>
+              <div class="radio-group" id="member-status">
+                <label class="radio-option">
+                  <input type="radio" name="member_status" value="FWNS-MD Member" id="status-member"/>
+                  🟢 FWNS-MD Member ($75)
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="member_status" value="Non-Member" id="status-nonmember"/>
+                  ⚪ Non-Member ($150)
+                </label>
+              </div>
+              <span class="field-error" id="err-status">Please select your membership status.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Equipment -->
+        <div class="rental-form-card fade-in">
+          <div class="form-section-title">📦 Equipment Requested</div>
+
+          <div class="avail-notice">
+            <span class="icon">⚠️</span>
+            <span>All equipment availability is subject to verification by the Executive Committee. Submitting this form does not guarantee availability. You will be contacted within 2–3 business days to confirm your rental.</span>
+          </div>
+
+          <div class="equip-grid" id="equip-grid">
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Tent / Canopy" class="equip-check"/>
+                🏕️ Tent / Canopy
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+            </div>
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Tables & Chairs" class="equip-check"/>
+                🪑 Tables &amp; Chairs
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+            </div>
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Sound System / Speakers / Microphone" class="equip-check"/>
+                🔊 Sound System / Speakers / Microphone
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+            </div>
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Cultural Decorations & Equipment" class="equip-check"/>
+                🎭 Cultural Decorations &amp; Equipment
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+            </div>
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Sports Equipment" class="equip-check"/>
+                ⚽ Sports Equipment
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+            </div>
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Cooking Equipment" class="equip-check"/>
+                🍳 Cooking Equipment
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+            </div>
+
+            <div class="equip-item">
+              <label class="equip-label">
+                <input type="checkbox" name="equipment" value="Other" class="equip-check" id="equip-other-cb"/>
+                📦 Other
+              </label>
+              <div class="equip-avail-note">⚠️ Availability not confirmed — please contact our General Secretary or Vice President at <a href="mailto:farwestnepalese@gmail.com">farwestnepalese@gmail.com</a> to verify availability before submitting your request.</div>
+              <div class="equip-other-input" id="other-input-wrap">
+                <input type="text" id="other-equip" name="other_equipment" placeholder="Please describe the equipment you need…"/>
+              </div>
+            </div>
+
+          </div>
+          <span class="field-error" id="err-equip" style="display:none;margin-top:0.5rem;">Please select at least one equipment item.</span>
+        </div>
+
+        <!-- Section 3: Rental Dates & Purpose -->
+        <div class="rental-form-card fade-in">
+          <div class="form-section-title">📅 Rental Dates &amp; Event Details</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="field-label" for="rental-date">Rental / Pickup Date <span class="req">*</span></label>
+              <input type="date" id="rental-date" name="rental_date" required/>
+              <span class="field-error" id="err-rental-date">Please select a rental date.</span>
+            </div>
+            <div class="form-group">
+              <label class="field-label" for="return-date">Return Date <span class="req">*</span></label>
+              <input type="date" id="return-date" name="return_date" required/>
+              <span class="field-error" id="err-return-date">Please select a return date after the rental date.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label class="field-label" for="event-desc">Event / Purpose Description <span class="req">*</span></label>
+              <textarea id="event-desc" name="event_description" placeholder="Describe your event or purpose — e.g., Birthday celebration for 50 guests at a community park in Timonium, MD on July 4th…" required></textarea>
+              <span class="field-error" id="err-desc">Please describe your event or purpose.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Liability Waiver -->
+        <div class="rental-form-card fade-in">
+          <div class="form-section-title">⚖️ Liability Waiver</div>
+
+          <div class="waiver-box">
+            <strong>EQUIPMENT RENTAL LIABILITY WAIVER — Far-Western Nepalese Society of Maryland (FWNS-MD)</strong><br/><br/>
+            By signing below, I acknowledge and agree to the following terms:<br/><br/>
+            <strong>1. Responsibility for Equipment:</strong> I, the undersigned renter, am fully and solely responsible for all equipment rented from FWNS-MD from the time of pickup until the time of return. This includes all items, accessories, cables, parts, and packaging associated with the rented equipment.<br/><br/>
+            <strong>2. Damage, Loss, or Breakage:</strong> I agree to bear all costs associated with any damage, loss, breakage, malfunction, or theft of the rented equipment during my rental period. This includes, but is not limited to, repair costs, replacement costs, and any costs incurred by FWNS-MD due to the condition of returned equipment.<br/><br/>
+            <strong>3. Return Condition:</strong> I agree to return all equipment in the same condition as received — clean, fully functional, and complete. Any equipment returned damaged, incomplete, or beyond normal wear will be assessed by the Executive Committee, and I will be invoiced accordingly.<br/><br/>
+            <strong>4. Indemnification:</strong> I agree to indemnify, defend, and hold harmless FWNS-MD, its officers, directors, volunteers, and members from any claims, liabilities, damages, or expenses arising from my use of the rented equipment.<br/><br/>
+            <strong>5. No Subletting:</strong> I agree not to lend, sublet, or transfer any rented equipment to any third party without the prior written consent of FWNS-MD.<br/><br/>
+            <strong>6. Payment Confirmation:</strong> I understand that payment (Members: $75 / Non-Members: $150) via Zelle to farwestnepalese@gmail.com is required to confirm my booking once equipment availability is verified by the Executive Committee. Submitting this form alone does not reserve equipment.<br/><br/>
+            This waiver is legally binding. By typing my full name below and checking the confirmation box, I confirm I have read, understood, and agreed to all the above terms.
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label class="field-label" for="waiver-sig">Digital Signature — Type Your Full Legal Name <span class="req">*</span></label>
+              <input type="text" id="waiver-sig" name="waiver_signature" placeholder="Type your full legal name exactly as it appears on your ID…" required/>
+              <span class="field-error" id="err-sig">Please type your full name as your digital signature.</span>
+            </div>
+          </div>
+
+          <label class="waiver-confirm" id="waiver-confirm-label">
+            <input type="checkbox" id="waiver-agree" name="waiver_agreed" required/>
+            <span>I have read, understood, and agree to the Liability Waiver above. I understand I am fully responsible for any damage, loss, breakage, or repair costs to rented equipment. <strong>This serves as my legal digital signature.</strong></span>
+          </label>
+          <span class="field-error" id="err-waiver" style="margin-top:0.4rem;">You must read and agree to the liability waiver to submit.</span>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="payment-box fade-in">
+          <h4>💳 Payment Instructions</h4>
+          <p>After your rental is confirmed by our team (within 2–3 business days), please complete payment to secure your booking:</p>
+          <p>Send payment via <span class="zelle">💜 Zelle</span> to <strong>farwestnepalese@gmail.com</strong></p>
+          <p>• FWNS-MD Members: <strong>$75</strong> &nbsp;|&nbsp; Non-Members: <strong>$150</strong></p>
+          <p style="font-size:0.78rem;opacity:0.8;">Note: Payment is required only after we confirm equipment availability. Submitting this form does not charge you anything.</p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">
+          📨 Submit Rental Request
+        </button>
+
+      </form>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="FWNS-MD"/>
+          <div class="footer-brand-text">
+            <div class="name">Far-Western Nepalese Society</div>
+            <div class="sub">Maryland, USA</div>
+          </div>
+        </div>
+        <p class="footer-desc">A 501(c)(3) nonprofit organization uniting the Far-Western Nepalese diaspora in Maryland through culture, education, sports, and community support.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/FWNSMD" target="_blank" rel="noopener" title="Facebook">f</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="sports.html">Sports</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+          <li><a href="rental.html">Equipment Rentals</a></li>
+          <li><a href="election.html">Election 2026</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="about.html#programs">Cultural Events</a></li>
+          <li><a href="about.html#programs">Sports Clubs</a></li>
+          <li><a href="about.html#programs">Youth &amp; Education</a></li>
+          <li><a href="about.html#programs">Health &amp; Wellness</a></li>
+          <li><a href="about.html#programs">Community Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@fwnsmd.org">info@fwnsmd.org</a></li>
+          <li><a href="https://www.facebook.com/FWNSMD" target="_blank">Facebook</a></li>
+          <li><a href="contact.html">Contact Form</a></li>
+          <li><a href="election.html">Election Info</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Far-Western Nepalese Society, Maryland, USA. All Rights Reserved.</p>
+      <div class="ein">
+        <span>EIN: 93-2746265</span>
+        <span>·</span>
+        <span>501(c)(3) Public Charity</span>
+        <span>·</span>
+        <span>Incorporated July 15, 2022</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// ── Equipment checkbox: show/hide availability note ──
+document.querySelectorAll('.equip-check').forEach(function(cb) {
+  cb.addEventListener('change', function() {
+    var item = this.closest('.equip-item');
+    var note = item.querySelector('.equip-avail-note');
+    if (note) note.style.display = this.checked ? 'block' : 'none';
+    // Other text input
+    if (this.id === 'equip-other-cb') {
+      var wrap = document.getElementById('other-input-wrap');
+      if (wrap) wrap.style.display = this.checked ? 'block' : 'none';
+    }
+  });
+});
+
+// ── Set min date for rental/return fields ──
+(function() {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('rental-date').min = today;
+  document.getElementById('return-date').min = today;
+
+  document.getElementById('rental-date').addEventListener('change', function() {
+    document.getElementById('return-date').min = this.value || today;
+    if (document.getElementById('return-date').value && document.getElementById('return-date').value < this.value) {
+      document.getElementById('return-date').value = this.value;
+    }
+  });
+})();
+
+// ── Form validation & submit ──
+document.getElementById('rental-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var valid = true;
+
+  function showErr(id) {
+    var el = document.getElementById(id);
+    if (el) { el.style.display = 'block'; el.classList.add('show'); }
+  }
+  function hideErr(id) {
+    var el = document.getElementById(id);
+    if (el) { el.style.display = 'none'; el.classList.remove('show'); }
+  }
+  function markField(id, hasErr) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (hasErr) el.classList.add('error'); else el.classList.remove('error');
+  }
+
+  // Name
+  var name = document.getElementById('full-name').value.trim();
+  if (!name) { showErr('err-name'); markField('full-name', true); valid = false; }
+  else { hideErr('err-name'); markField('full-name', false); }
+
+  // Email
+  var email = document.getElementById('email').value.trim();
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailOk) { showErr('err-email'); markField('email', true); valid = false; }
+  else { hideErr('err-email'); markField('email', false); }
+
+  // Phone
+  var phone = document.getElementById('phone').value.trim();
+  if (!phone) { showErr('err-phone'); markField('phone', true); valid = false; }
+  else { hideErr('err-phone'); markField('phone', false); }
+
+  // Member status
+  var status = document.querySelector('input[name="member_status"]:checked');
+  if (!status) { showErr('err-status'); valid = false; }
+  else { hideErr('err-status'); }
+
+  // Equipment
+  var equip = document.querySelectorAll('input[name="equipment"]:checked');
+  if (equip.length === 0) { showErr('err-equip'); valid = false; }
+  else { hideErr('err-equip'); }
+
+  // Rental date
+  var rentalDate = document.getElementById('rental-date').value;
+  if (!rentalDate) { showErr('err-rental-date'); markField('rental-date', true); valid = false; }
+  else { hideErr('err-rental-date'); markField('rental-date', false); }
+
+  // Return date
+  var returnDate = document.getElementById('return-date').value;
+  if (!returnDate || returnDate < rentalDate) { showErr('err-return-date'); markField('return-date', true); valid = false; }
+  else { hideErr('err-return-date'); markField('return-date', false); }
+
+  // Event description
+  var desc = document.getElementById('event-desc').value.trim();
+  if (!desc) { showErr('err-desc'); markField('event-desc', true); valid = false; }
+  else { hideErr('err-desc'); markField('event-desc', false); }
+
+  // Waiver signature
+  var sig = document.getElementById('waiver-sig').value.trim();
+  if (!sig) { showErr('err-sig'); markField('waiver-sig', true); valid = false; }
+  else { hideErr('err-sig'); markField('waiver-sig', false); }
+
+  // Waiver checkbox
+  var waiverChecked = document.getElementById('waiver-agree').checked;
+  if (!waiverChecked) { showErr('err-waiver'); valid = false; }
+  else { hideErr('err-waiver'); }
+
+  if (!valid) {
+    // Scroll to first error
+    var firstErr = document.querySelector('.field-error.show, input.error, select.error, textarea.error');
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // All valid — collect data and send via Google Apps Script Web App
+  // (or show success if not yet connected)
+  var equipList = Array.from(equip).map(function(c){ return c.value; });
+  var otherEquip = document.getElementById('other-equip') ? document.getElementById('other-equip').value.trim() : '';
+  if (otherEquip) equipList.push('Other: ' + otherEquip);
+
+  var payload = {
+    full_name: name,
+    email: email,
+    phone: phone,
+    member_status: status.value,
+    equipment: equipList.join(', '),
+    rental_date: rentalDate,
+    return_date: returnDate,
+    event_description: desc,
+    waiver_signature: sig,
+    submitted_at: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+  };
+
+  // ── Google Apps Script endpoint ──
+  // Replace the URL below with your deployed Apps Script Web App URL
+  var APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Submitting…';
+
+  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
+    // No backend connected yet — show success immediately for testing
+    showSuccess();
+    return;
+  }
+
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function() { showSuccess(); })
+  .catch(function() { showSuccess(); }); // show success regardless (no-cors always resolves)
+
+  function showSuccess() {
+    document.getElementById('rental-form').style.display = 'none';
+    var s = document.getElementById('rental-success');
+    s.style.display = 'block';
+    s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
+</script>
+
+<!-- Chatbase AI Chatbot -->
+<script>
+  (function(){
+    var s=document.createElement("script");
+    s.src="https://www.chatbase.co/embed.min.js";
+    s.id="K-AIodg2Q1SHOe9cmQiOb";
+    s.defer=true;
+    document.body.appendChild(s);
+  })();
+</script>
+</body>
+</html>
