@@ -3,58 +3,69 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sports Clubs · Far-Western Nepalese Society, Maryland</title>
-  <meta name="description" content="FWNS-MD sports clubs — soccer, cricket, and volleyball. Competitive teams representing the Far-Western Nepalese community across Maryland and beyond."/>
+  <title>Sports & Activities · Far-Western Nepalese Society, Maryland</title>
+  <meta name="description" content="FWNS-MD supports affiliated sports clubs and teams with financial assistance for tournaments and activities. Learn about our clubs and how to request support."/>
   <link rel="icon" href="assets/logo.png"/>
   <link rel="stylesheet" href="css/style.css?v=2"/>
   <style>
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
-    .sport-section { padding: 3rem 0; }
-    .sport-header {
-      display: flex; align-items: center; gap: 1rem;
-      margin-bottom: 1.5rem;
+    /* Club cards */
+    .club-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
-    .sport-icon {
-      width: 56px; height: 56px; border-radius: 12px;
-      background: var(--blue);
+    .club-card:hover { box-shadow: 0 8px 24px rgba(26,58,92,0.1); transform: translateY(-2px); }
+    .club-card .club-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: #EEF3F8;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; flex-shrink: 0;
+      font-size: 1.75rem;
     }
-    .sport-header h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); margin: 0; }
-    .sport-header .sub { font-size: 0.8rem; color: var(--gray); }
+    .club-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--blue); margin: 0; }
+    .club-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.65; margin: 0; }
 
+    /* Achievement list */
     .achievement-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem; margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 1.25rem;
     }
     .achievement-card {
       background: var(--white);
       border: 1.5px solid var(--border);
-      border-radius: 12px; padding: 1.25rem 1.5rem;
+      border-radius: 12px; padding: 1.25rem;
     }
     .achievement-card .trophy { font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .achievement-card h4 { font-size: 0.9rem; color: var(--dark); margin-bottom: 0.25rem; font-weight: 700; }
+    .achievement-card h4 { font-size: 0.875rem; color: var(--dark); margin-bottom: 0.25rem; font-weight: 700; }
     .achievement-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
 
-    .highlight-box {
-      background: var(--blue); color: var(--white);
-      border-radius: 14px; padding: 2rem;
-      margin-top: 1.5rem;
-    }
-    .highlight-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.75rem; }
-    .highlight-box p { font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin-bottom: 0.5rem; }
+    /* Requirement checklist */
+    .req-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .req-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--white); opacity: 0.9; }
+    .req-list li .check { color: var(--gold); font-weight: 700; font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+    .divider { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
+
+    .sport-section { padding: 2.5rem 0; }
+    .sport-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+    .sport-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .sport-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin: 0; }
+    .sport-header .sub { font-size: 0.8rem; color: var(--gray); margin-top: 0.2rem; }
+
+    .highlight-box { background: var(--blue); color: var(--white); border-radius: 14px; padding: 2rem; margin-top: 1.5rem; }
+    .highlight-box h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 0.75rem; }
+    .highlight-box p { font-size: 0.9rem; opacity: 0.85; line-height: 1.7; }
     .highlight-box .result { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
     .highlight-box .result-item { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.82rem; }
     .highlight-box .result-item strong { display: block; font-size: 1rem; color: var(--gold); }
-
-    .tourney-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; }
-    .tourney-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.9rem; color: var(--gray); }
-    .tourney-list li::before { content: '→'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
-
-    .divider { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   </style>
 </head>
 <body>
@@ -68,7 +79,7 @@
     </div>
   </a>
   <div class="nav-toggle"><span></span><span></span><span></span></div>
-    <ul class="nav-links">
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li>
       <a class="dropdown-toggle">About</a>
@@ -82,7 +93,7 @@
     <li>
       <a class="dropdown-toggle active">Community</a>
       <ul class="nav-dropdown">
-        <li><a href="sports.html">Sports</a></li>
+        <li><a href="sports.html" class="active">Sports</a></li>
         <li><a href="volunteer.html">Volunteer</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="resources.html">Community Resources</a></li>
@@ -104,124 +115,265 @@
 </nav>
 
 <main>
-  <div class="page-hero">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Sports Clubs</span></div>
-    <h1>Sports Clubs</h1>
-    <p>FWNS-MD fields competitive teams in soccer, cricket, and volleyball — representing our community across Maryland and beyond.</p>
+
+  <!-- HERO -->
+  <div style="background: linear-gradient(135deg, #0f2440 0%, var(--blue) 100%); color: var(--white); padding: 4rem 2rem 3rem; text-align: center;">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Sports & Activities</span></div>
+    <div style="display: inline-block; background: rgba(212,160,23,0.2); border: 1px solid var(--gold); color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 50px; margin-bottom: 1rem;">⚽ FWNS-MD Affiliated Clubs</div>
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,4vw,3rem); font-weight: 900; margin-bottom: 0.75rem;">Sports &amp; Activities</h1>
+    <p style="opacity: 0.8; max-width: 560px; margin: 0 auto 2rem;">Supporting our affiliated clubs and teams — on the field and off it.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="#request" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: #1a1a1a; font-size: 0.9rem; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none;">
+        Submit a Support Request
+      </a>
+      <a href="#clubs" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); font-size: 0.9rem; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none;">
+        View Our Clubs
+      </a>
+    </div>
   </div>
 
+  <!-- ABOUT / SUPPORT POLICY -->
   <section style="background: var(--white);">
     <div class="section-inner">
-
-      <!-- SOCCER -->
-      <div class="sport-section fade-in">
-        <div class="sport-header">
-          <div class="sport-icon">⚽</div>
-          <div>
-            <h2>Soccer</h2>
-            <div class="sub">Adult &amp; Youth (U15) Teams · BANA Cup &amp; Regional Competitions</div>
-          </div>
+      <div class="two-col fade-in">
+        <div>
+          <span class="section-tag">Financial Support</span>
+          <h2 class="section-title">We Back Our Teams</h2>
+          <p style="color: var(--gray); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">FWNS-MD actively supports affiliated clubs and teams participating in sports tournaments and community activities across Maryland and beyond.</p>
+          <p style="color: var(--gray); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem;">As per our <strong>Bylaws</strong> and <strong>Sports Participation &amp; Support Policy</strong>, FWNS-MD provides up to <strong style="color: var(--blue);">$1,000 in financial support per activity</strong>, subject to Executive Committee approval.</p>
+          <p style="color: var(--gray); font-size: 0.95rem; line-height: 1.8;">Support may cover tournament entry fees, travel costs, and other approved sports activity expenses. All requests must be submitted in advance and meet the membership requirements below.</p>
         </div>
-        <p style="color:var(--gray); font-size:0.95rem; max-width:700px;">FWNS-MD fields both adult and youth soccer teams, competing in some of the most recognized Nepali soccer competitions in the Mid-Atlantic region. Our U15 youth program has been a particular source of pride, producing back-to-back championship wins.</p>
-
-        <div class="achievement-grid">
-          <div class="achievement-card">
-            <div class="trophy">🏆</div>
-            <h4>Himalaya Baltimore U15 Championship</h4>
-            <p>Our U15 team claimed the championship title at the Himalaya Baltimore U15 Soccer Tournament, defending their position as top youth team.</p>
-          </div>
-          <div class="achievement-card">
-            <div class="trophy">🏆</div>
-            <h4>BANA U15 Soccer Championship</h4>
-            <p>FWNS-MD's U15 squad won the BANA U15 Soccer Tournament Championship, further cementing the program's dominance in youth athletics.</p>
-          </div>
-          <div class="achievement-card">
-            <div class="trophy">⚽</div>
-            <h4>BANA Cup Participation</h4>
-            <p>Our adult soccer team actively participates in the BANA Cup — one of the region's most recognized Nepali soccer competitions.</p>
-          </div>
-        </div>
-      </div>
-
-      <hr class="divider"/>
-
-      <!-- VOLLEYBALL -->
-      <div class="sport-section fade-in">
-        <div class="sport-header">
-          <div class="sport-icon">🏐</div>
-          <div>
-            <h2>Volleyball — Far-Western Volleyball Club</h2>
-            <div class="sub">Maryland Cup Organizers · Interstate Competition</div>
-          </div>
-        </div>
-        <p style="color:var(--gray); font-size:0.95rem; max-width:700px;">In coordination with the Far-Western Volleyball Club, FWNS-MD organized the landmark <strong>FWNS Maryland Cup 2025</strong> — a historic inter-state volleyball tournament that turned Maryland into a national platform for Nepali volleyball excellence.</p>
-
-        <div class="highlight-box">
-          <h3>FWNS Maryland Cup 2025 — Inter-State Volleyball Tournament</h3>
-          <p>Held on August 9–10, 2025 in Jessup, Maryland. Attended by Maryland State Delegates and featuring teams from across the United States.</p>
-          <div class="result">
-            <div class="result-item"><strong>14</strong>Teams Competed</div>
-            <div class="result-item"><strong>Multi-State</strong>Participation</div>
-            <div class="result-item"><strong>🏆 Champions</strong>Everest FCU Team (Texas)</div>
-            <div class="result-item"><strong>Runner-Up</strong>MD Nepalese Volleyball Club</div>
+        <div>
+          <div style="background: var(--light); border-radius: 14px; padding: 2rem;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--blue); margin-bottom: 1rem;">What Support Can Cover</h3>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--gray);">
+                <span style="color: var(--blue); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                Tournament entry &amp; registration fees
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--gray);">
+                <span style="color: var(--blue); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                Travel and transportation costs
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--gray);">
+                <span style="color: var(--blue); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                Equipment and uniform costs (if approved)
+              </li>
+              <li style="display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--gray);">
+                <span style="color: var(--blue); font-weight: 700; font-size: 1.1rem; flex-shrink: 0;">✓</span>
+                Other approved activity expenses
+              </li>
+            </ul>
+            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); text-align: center;">
+              <div style="font-size: 2rem; font-family: 'Playfair Display', serif; font-weight: 900; color: var(--blue);">Up to $1,000</div>
+              <div style="font-size: 0.8rem; color: var(--gray); margin-top: 0.25rem;">per activity · subject to EC approval</div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <hr class="divider"/>
+  <!-- MEMBERSHIP REQUIREMENT -->
+  <section style="background: var(--blue);">
+    <div class="section-inner">
+      <div class="fade-in" style="max-width: 760px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span class="section-tag" style="color: var(--gold);">Eligibility Requirement</span>
+          <h2 class="section-title" style="color: var(--white);">Membership Requirement for Support</h2>
+          <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; max-width: 560px; margin: 0 auto;">To qualify for FWNS-MD financial support, teams must meet the following membership requirements as per our Bylaws and Sports Policy.</p>
+        </div>
 
-      <!-- CRICKET -->
-      <div class="sport-section fade-in">
-        <div class="sport-header">
-          <div class="sport-icon">🏏</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+
+          <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; padding: 1.75rem;">
+            <div style="font-size: 1.75rem; margin-bottom: 0.75rem;">👥</div>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold); margin-bottom: 0.75rem;">Adult Teams</h3>
+            <ul class="req-list">
+              <li><span class="check">✓</span> At least <strong>2/3 of all team members</strong> must be current FWNS-MD members in good standing</li>
+              <li><span class="check">✓</span> A full player list with membership status must be submitted with the request</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; padding: 1.75rem;">
+            <div style="font-size: 1.75rem; margin-bottom: 0.75rem;">🧒</div>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold); margin-bottom: 0.75rem;">Youth Teams (Under 18)</h3>
+            <ul class="req-list">
+              <li><span class="check">✓</span> At least <strong>2/3 of youth players</strong> must have a parent or guardian who is a current FWNS-MD member</li>
+              <li><span class="check">✓</span> A full player list with parent/guardian membership status must be submitted</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div style="background: rgba(212,160,23,0.15); border: 1px solid var(--gold); border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+          <span style="font-size: 1.25rem; flex-shrink: 0;">📋</span>
           <div>
-            <h2>Cricket</h2>
-            <div class="sub">Two Recognized Clubs · Maryland &amp; Interstate Competitions</div>
+            <p style="font-size: 0.875rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem;"><strong style="color: var(--gold);">Required when submitting:</strong> A complete player roster with each member's FWNS-MD membership status must be included in the support request form.</p>
+            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Not a member yet? Join FWNS-MD to ensure your team qualifies.</p>
           </div>
         </div>
-        <p style="color:var(--gray); font-size:0.95rem; max-width:700px;">FWNS-MD is proud to have two officially recognized and established cricket clubs under its umbrella, both recognized as per the bylaws of FWNS-MD. Together they represent the depth, passion, and competitive spirit of our cricket community.</p>
 
-        <div class="achievement-grid" style="margin-top:1.5rem;">
-          <div class="achievement-card">
-            <div class="trophy">🏏</div>
-            <h4>Far-Western Cricket Club</h4>
-            <p>An established club competing in cricket tournaments across Maryland and interstate, proudly representing the Far-Western Nepalese community.</p>
-          </div>
-          <div class="achievement-card">
-            <div class="trophy">🏏</div>
-            <h4>FarWest United Cricket Club</h4>
-            <p>A recognized and established club competing in cricket tournaments across Maryland and interstate, proudly representing the Far-Western Nepalese community.</p>
-          </div>
-          <div class="achievement-card">
-            <div class="trophy">📋</div>
-            <h4>Bylaws Recognized</h4>
-            <p>Both clubs are formally recognized and established as affiliated clubs under the bylaws of the Far-Western Nepalese Society of Maryland.</p>
-          </div>
-          <div class="achievement-card">
-            <div class="trophy">🤝</div>
-            <h4>Open to All</h4>
-            <p>Both clubs are always accepting new players and volunteers. Whether you're an experienced cricketer or just starting out, you're welcome to join.</p>
-          </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="membership.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: #1a1a1a; font-size: 0.9rem; font-weight: 700; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none;">
+            Join FWNS-MD →
+          </a>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- AFFILIATED CLUBS -->
+  <section id="clubs" style="background: var(--light);">
+    <div class="section-inner">
+      <div style="text-align: center; margin-bottom: 2.5rem;" class="fade-in">
+        <span class="section-tag">Our Teams</span>
+        <h2 class="section-title">Affiliated Sports Clubs</h2>
+        <p class="section-sub" style="margin: 0 auto;">FWNS-MD is proud to support these affiliated clubs competing across Maryland and beyond.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;" class="fade-in">
+
+        <div class="club-card" style="border-top: 4px solid var(--blue);">
+          <div class="club-icon">⚽</div>
+          <div>
+            <h3>FWNS Football Club</h3>
+            <p>Our soccer teams compete in adult and youth divisions including the BANA Cup and regional tournaments. Back-to-back U15 championship winners.</p>
+          </div>
+          <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Adult Team</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Youth U15</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">BANA Cup</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="club-card" style="border-top: 4px solid var(--blue);">
+          <div class="club-icon">🏏</div>
+          <div>
+            <h3>FWNS Cricket Club</h3>
+            <p>Two officially recognized cricket clubs — Far-Western Cricket Club and FarWest United Cricket Club — competing in Maryland and interstate tournaments.</p>
+          </div>
+          <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">2 Clubs</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Bylaws Recognized</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Interstate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="club-card" style="border-top: 4px solid var(--blue);">
+          <div class="club-icon">🏐</div>
+          <div>
+            <h3>FWNS Volleyball Team</h3>
+            <p>Organizers of the historic FWNS Maryland Cup 2025 — a landmark inter-state tournament with 14 teams from across the United States.</p>
+          </div>
+          <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Maryland Cup</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">14 Teams</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Interstate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="club-card" style="border-top: 4px solid var(--blue);">
+          <div class="club-icon">🏸</div>
+          <div>
+            <h3>FWNS Badminton Club</h3>
+            <p>Our badminton club brings members together for recreational play and competitive matches, building camaraderie within the community.</p>
+          </div>
+          <div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border);">
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Recreational</span>
+              <span style="font-size: 0.72rem; background: #EEF3F8; color: var(--blue); font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px;">Competitive</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST ACHIEVEMENTS -->
+  <section style="background: var(--white);">
+    <div class="section-inner">
+      <div class="fade-in" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-tag">Community Pride</span>
+        <h2 class="section-title">Recent Achievements</h2>
+      </div>
+      <div class="achievement-grid fade-in">
+        <div class="achievement-card">
+          <div class="trophy">🏆</div>
+          <h4>Himalaya Baltimore U15 Championship</h4>
+          <p>Our U15 soccer team claimed the championship title at the Himalaya Baltimore U15 Soccer Tournament.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="trophy">🏆</div>
+          <h4>BANA U15 Soccer Championship</h4>
+          <p>FWNS-MD's U15 squad won the BANA U15 Soccer Tournament, cementing the program's dominance in youth athletics.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="trophy">🏟️</div>
+          <h4>FWNS Maryland Cup 2025</h4>
+          <p>Organized a landmark inter-state volleyball tournament with 14 teams, attended by Maryland State Delegates.</p>
+        </div>
+        <div class="achievement-card">
+          <div class="trophy">⚽</div>
+          <h4>BANA Cup Participation</h4>
+          <p>Adult soccer team actively participates in the BANA Cup — one of the region's most recognized Nepali soccer competitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT REQUEST FORM -->
+  <section id="request" style="background: var(--light);">
+    <div class="section-inner">
+      <div class="fade-in" style="max-width: 680px; margin: 0 auto; text-align: center;">
+        <span class="section-tag">Apply for Funding</span>
+        <h2 class="section-title">Submit a Support Request</h2>
+        <p class="section-sub" style="margin: 0 auto 2rem;">Fill out the form to request financial support for your team's tournament or activity participation. Make sure you have reviewed the membership requirements above before submitting.</p>
+
+        <div style="background: var(--white); border: 1.5px solid var(--border); border-top: 4px solid var(--gold); border-radius: 14px; padding: 2.5rem 2rem;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">📋</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--blue); margin-bottom: 0.75rem;">Activity Support Request Form</h3>
+          <p style="font-size: 0.875rem; color: var(--gray); line-height: 1.7; margin-bottom: 0.5rem;">The form includes fields for activity details, player roster with membership status, requested amount, and supporting documents.</p>
+          <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 2rem;">File uploads are supported — you can attach your player list directly in the form.</p>
+
+          <a href="https://docs.google.com/forms/d/1IZLhhFGRjqKYlhYUkR6acv-mQS9LFA4ncHBdjr89ZCQ/viewform" target="_blank" rel="noopener noreferrer"
+            style="display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; background: var(--gold); color: #1a1a1a; font-size: 1rem; font-weight: 700; padding: 0.9rem 2.25rem; border-radius: 10px; text-decoration: none; letter-spacing: 0.01em;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Submit Activity Request Form
+          </a>
+
+          <p style="font-size: 0.78rem; color: var(--gray); margin-top: 1.25rem;">Opens in a new tab · Secure Google Form</p>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1.25rem; background: var(--white); border-radius: 10px; border: 1px solid var(--border);">
+          <p style="font-size: 0.875rem; color: var(--gray);">Have questions before submitting? Contact us at <a href="mailto:info@fwnsmd.org" style="color: var(--blue); font-weight: 600;">info@fwnsmd.org</a></p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- JOIN CTA -->
-  <section>
+  <section style="background: var(--white);">
     <div class="section-inner">
-      <div class="accent-box fade-in" style="text-align:center;">
-        <span class="section-tag" style="color:var(--gold);">Get Involved</span>
-        <h2 class="section-title" style="color:var(--white);">Play for FWNS-MD</h2>
-        <p style="opacity:0.8; max-width:500px; margin:0 auto 2rem;">Whether you're a seasoned athlete or just love the game, our sports clubs welcome players of all levels. Become a member to join a team.</p>
-        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <div class="accent-box fade-in" style="text-align: center;">
+        <span class="section-tag" style="color: var(--gold);">Get Involved</span>
+        <h2 class="section-title" style="color: var(--white);">Play for FWNS-MD</h2>
+        <p style="opacity: 0.8; max-width: 500px; margin: 0 auto 2rem;">Whether you're a seasoned athlete or just love the game, our sports clubs welcome players of all levels. Become a member to join a team and unlock support eligibility.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
           <a href="membership.html" class="btn btn-gold">Become a Member</a>
-          <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:var(--white);">Contact Us</a>
+          <a href="contact.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: var(--white);">Contact Us</a>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -239,19 +391,16 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="leadership.html">Leadership</a></li>
-        <li><a href="programs.html">Programs</a></li><li><a href="membership.html">Membership</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="membership.html">Membership</a></li>
         <li><a href="sports.html">Sports</a></li>
         <li><a href="election.html">Election 2026</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="resources.html">Community Resources</a></li>
-        <li><a href="rental.html">Equipment Rentals</a></li>
-        <li><a href="documents.html">Documents</a></li><li><a href="agm.html">AGM</a></li>
       </ul></div>
-      <div class="footer-col"><h5>Quick Links</h5><ul>
+      <div class="footer-col"><h5>Sports</h5><ul>
+        <li><a href="sports.html#clubs">Our Clubs</a></li>
+        <li><a href="sports.html#request">Request Support</a></li>
         <li><a href="membership.html">Join FWNS-MD</a></li>
-        <li><a href="election.html">Election 2026</a></li>
         <li><a href="assets/FWNSMD_ByLaws.pdf" download>Download Bylaws</a></li>
-        <li><a href="assets/AGM-2026-Report.pdf" download>AGM 2026 Report</a></li>
       </ul></div>
       <div class="footer-col"><h5>Contact</h5><ul>
         <li><a href="mailto:info@fwnsmd.org">info@fwnsmd.org</a></li>
@@ -265,6 +414,7 @@
     </div>
   </div>
 </footer>
+
 <script src="js/main.js"></script>
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="K-AIodg2Q1SHOe9cmQiOb";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
